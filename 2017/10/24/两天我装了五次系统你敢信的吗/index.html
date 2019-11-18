@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="两天我重装了五次系统你敢信的吗送给自己三个字 无脑作从现在开始再也不追求高版本，一切不以稳定为前提的行为都是耍流氓！  win10企业版这个坑”很早之前“系统是win10家庭版，装CCSv6(TI的一款IDE)一直报错，网上有说可能家庭版有些底层不一样，于是暴力换序列号转换成专业版，我只想来一句完美。　　在msdn下载镜像的时候，脑子一抽选了没有装过的企业版。激活之后！在装完所有必要软件之后！怕以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两天我装了五次系统你敢信的吗">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2017&#x2F;10&#x2F;24&#x2F;%E4%B8%A4%E5%A4%A9%E6%88%91%E8%A3%85%E4%BA%86%E4%BA%94%E6%AC%A1%E7%B3%BB%E7%BB%9F%E4%BD%A0%E6%95%A2%E4%BF%A1%E7%9A%84%E5%90%97&#x2F;index.html">
+<meta property="og:site_name" content="amilyxy&#39;Blog">
+<meta property="og:description" content="两天我重装了五次系统你敢信的吗送给自己三个字 无脑作从现在开始再也不追求高版本，一切不以稳定为前提的行为都是耍流氓！  win10企业版这个坑”很早之前“系统是win10家庭版，装CCSv6(TI的一款IDE)一直报错，网上有说可能家庭版有些底层不一样，于是暴力换序列号转换成专业版，我只想来一句完美。　　在msdn下载镜像的时候，脑子一抽选了没有装过的企业版。激活之后！在装完所有必要软件之后！怕以">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;2.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;9.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;10.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;11.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;15.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;12.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;13.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;14.png">
+<meta property="og:updated_time" content="2019-11-18T12:53:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F&#x2F;1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/24/两天我装了五次系统你敢信的吗/"/>
+
+
+
+
+
+  <title>两天我装了五次系统你敢信的吗 | amilyxy'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">amilyxy'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">安静的才是苦口良药</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/%E4%B8%A4%E5%A4%A9%E6%88%91%E8%A3%85%E4%BA%86%E4%BA%94%E6%AC%A1%E7%B3%BB%E7%BB%9F%E4%BD%A0%E6%95%A2%E4%BF%A1%E7%9A%84%E5%90%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="amilyxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="amilyxy'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">两天我装了五次系统你敢信的吗</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T14:46:21+08:00">
+                2017-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">Ubuntu</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="两天我重装了五次系统你敢信的吗"><a href="#两天我重装了五次系统你敢信的吗" class="headerlink" title="两天我重装了五次系统你敢信的吗"></a>两天我重装了五次系统你敢信的吗</h3><p>送给自己三个字 <strong>无脑作</strong><br>从现在开始再也不追求高版本，一切不以稳定为前提的行为都是耍流氓！</p>
+<ul>
+<li><strong>win10企业版这个坑</strong><br>”很早之前“系统是win10家庭版，装CCSv6(TI的一款IDE)一直报错，网上有说可能家庭版有些底层不一样，于是暴力换序列号转换成专业版，我只想来一句完美。<br>　　在<a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">msdn</a>下载镜像的时候，脑子一抽选了没有装过的企业版。激活之后！在装完所有必要软件之后！怕以后报错，于是乎，我再次拿出杀手锏，结果死活不成功。<blockquote>
+<p>Win10专业版转企业版是可以通过企业版的激活码直接进行转换，Windows10企业版中输入Windows10专业版的序列号是无法进行操作<br>（来自百度）</p>
+</blockquote>
+</li>
+</ul>
+<p>知道真相的我话都说不出来了，经过我深度挖掘，发现网友还是有一个办法的：</p>
+<p><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/1.png" alt="重新下载一个专业版，直接点击Setup重装"><br>重装完了之后，安装office，用KMS一键激活office和windows，奇葩的事情出现了。<br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/2.jpg" alt=""><br>他竟然告诉我两个系统都…都激活了？？？？而且C盘莫名其妙的大了很多…WTF再次格式化重装专业版，淘宝购买序列号，一次搞定 √<br><strong>企业版真的碰不得…</strong></p>
+<ul>
+<li><strong>Ubuntu17.04</strong><br>重装系统加上修改硬盘分区之后Ubuntu也夭折了，追求新版本的毫不犹豫的装了17版。当然lock之后还是会黑屏，不过wifi没有那么容易挂掉啦hh<br>现实很快的输给了理想，竟然在Software Center安装不了deb，不过website下载的deb包通过<code>dpkg -i (filename)</code>可以解决,Drcom客户端就难说了，按照16.04下的操作执行<code>sudo ./DrClientLinux</code>之后，竟然提示cant find files，双击也无法打开…或许只有资深玩家才知道如何在17下编译吧，新手真心建议还是装LTS吧…</li>
+</ul>
+<p><strong>以上就是五次心酸重装史</strong></p>
+<h3 id="ubuntu必备软件安装（备忘录）"><a href="#ubuntu必备软件安装（备忘录）" class="headerlink" title="ubuntu必备软件安装（备忘录）"></a>ubuntu必备软件安装（备忘录）</h3><ul>
+<li><strong>Drcom</strong><br>在cmcc黑的图书馆只能靠这个活着，可是真的很难很难装..我cao了，上次装装了一周，这次又是好几天…很无奈…</li>
+</ul>
+<hr>
+<p>此处又是过了半天..我已经放弃了..不想再去图书馆了，tm的你屏蔽cmcc有猫病吧..啊啊啊狂暴症发作中！！！</p>
+<p><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/3.png" alt="无解！！"></p>
+<ul>
+<li><strong>Chrome</strong><br>直接在官网下载Chrome最新版本的deb包，双击在软件中心下载即可。</li>
+</ul>
+<p><strong>解决Google无法访问的问题</strong><br>真真真的是问题千篇一律，方法百里挑一。<br>YouTube，gmail，facebook都能访问，就是无法使用谷歌搜索，原因: <del>不是私密连接</del>，百度之后发现解决方法真的很多…有导入证书，setting，安装旧版本(对于chrome新版本flash无法使用这个方法还是很有效)等等…<br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/4.png" alt=""><br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/5.png" alt=""><br><a href="http://blog.csdn.net/warrior_zhang/article/details/50320717" target="_blank" rel="noopener">解决方法</a>跳过DNS解析…罢了罢了我也不细纠了==|</p>
+<ul>
+<li><p><strong>搜狗输入法</strong><br>　可以很良心的讲，win下从来不用搜狗。linux下的瘦狗真的是简洁而又方便。<br>　双击官网下载的deb，在Software Center完成安装。打开System Settings（如下图）将Language Support 修改成fcitx，重启。<br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/6.png" alt=""><br>　重启之后打开右上角键盘配置和System Settings中的Text Entry，分别添加Sogou pinyin，皮肤的话官网下载ssf文件双击即可安装。<br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/7.png" alt=""></p>
+</li>
+<li><p><strong>Guake</strong>（大佬推荐，我也懒得去折腾其他终端扩展工具了</p>
+<blockquote>
+<p>Guake is a drop-down terminal for GNOME Desktop Environment, so you just need to press a key to invoke him, and press again to hide. Guake supports hotkeys, tabs, background transparent, etc</p>
+</blockquote>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install guake</span><br></pre></td></tr></table></figure>
+<p>　startup application里面设置开机启动，F12打开/隐藏Terminal，修改复制粘贴快捷键,Ctrl F1+F2+F3可切换多窗口 (自带Terminal看着都眼花，真心比<code>Alt+Ctrl+T</code>帅气的不要不要的啊。<br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/8.png" alt=""></p>
+</li>
+<li><p><strong>CompizConfig-Settings-Manager</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install compizconfig-settings-manager</span><br></pre></td></tr></table></figure>
+<p>据说可以配制出3D桌面…自行百度教程(我当然没用过，就用来简单的设置几个窗口特效~</p>
+</li>
+</ul>
+<p><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/9.png" alt="自定义终端窗口效果"></p>
+<ul>
+<li><p><strong>网易云音乐</strong><br>我已经记不清我有多久没用别的播放器了..<strong><a href="http://music.163.com/#/download" target="_blank" rel="noopener">官网</a>下载deb包安装。</strong></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i netease-<span class="keyword">cloud-music_xxx</span></span><br><span class="line"><span class="keyword">sudo </span>apt-get <span class="keyword">install </span>-f</span><br></pre></td></tr></table></figure>
+<p>或者双击在软件中心安装</p>
+</li>
+<li><p><strong>unity-teak-tool</strong><br>哼一点都不好用，我把热区打开之后竟然出现两个切换器，还是安装了compiz之后禁用unity application switcher才解决，卸掉也没用..烦了一天…要不是看上了他的主题，我真的要炸。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unity-tweak-tool</span><br><span class="line">sudo apt-get install numix-gtk-theme</span><br><span class="line">sudo apt-get install numix-icon-theme-circle</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>试了一下Flatabulous没有这个好看</p>
+<ul>
+<li><strong>Atom</strong><br>　我也没用过Sublime、VSCode，也不知道为什么不用他们，我只知道Atom是真的好看..插件丰富，有一段时间沉迷于寻找各种有趣的插件无法自拔<br>(据说Atom架构比不上..所以这可能是atom启动比较慢的原因吧..之间设置Atom光标闪烁和rollbar颜色时候，发现和写CSS一样，很有趣…..编不下了，溜了溜了）</li>
+</ul>
+<p><strong><a href="https://atom.io/" target="_blank" rel="noopener">官网</a>下载deb包，双击在软件中心安装即可。</strong><br>　已经下过好几次Atom了，它没有用户登录云同步的功能,要是能像chrome一样多好，每次都要重新一个个下载插件，找起来很麻烦，找了一篇<a href="http://www.jianshu.com/p/355aafae5454" target="_blank" rel="noopener">博文</a>，备份配置，可以参考参考～<br>　说个小插曲…刚开始用Ubuntu的时候我以为..所有的软件只能<code>make install</code>，有些软件死活make不了，反复下载卸载，把电脑折腾的估计都不想再让我碰它…很想笑…</p>
+<ul>
+<li><strong>oh-my-zsh</strong></li>
+</ul>
+<p><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/10.png" alt=""></p>
+<p>用久了这个再来用bash效率真的低了很多，习惯性的按快捷键但是没反应..<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">官网readme</a><br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh 　</span><br><span class="line">curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh</span><br><span class="line">chsh -s /usr/bin/zsh</span><br><span class="line">cat /etc/shells　　 //查看当前系统中所装的shell</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span>　　 //可以看到现在你用的shell是</span><br></pre></td></tr></table></figure><br><strong>配置:</strong><br>1.nano ~/.zshrc 修改主题 agnoster </p>
+<p><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/11.png" alt=""><br>2.修改主题之后会出现乱码，<a href="https://github.com/powerline/fonts" target="_blank" rel="noopener">下载powerline字体</a>,修改第二个字体为powerline regular即可</p>
+<p><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/15.png" alt=""><br>3.添加<code>export DEFAULT_USER=&quot;amilyxy&quot;</code>到~/.zshrc中，隐藏用户名<br>4.添加plugins(git autojump extract zsh-syntax-highlighting)<br>extract-强大的解压命令，autojump-快速跳转，zsh-syntax-highlighting 命令高亮<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install autojump</span><br><span class="line">//将此行添加到zshrc中</span><br><span class="line">[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.zsh</span><br></pre></td></tr></table></figure><br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/jimmijj/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting</span><br><span class="line">//在plugins中添加zsh-syntax-highlighting</span><br></pre></td></tr></table></figure><br>5.安装thefuck，在zshrc中添加<code>eval &quot;$(thefuck --alias)&quot;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-pip</span><br><span class="line">sudo pip install thefuck</span><br></pre></td></tr></table></figure>
+<p>最后<code>source ~/.zshrc</code>更新配置<br>附一张图嘻嘻嘻嘻，终极终端配置，完美~</p>
+<p><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/12.png" alt="配色什么的见谅，已经被Drcom搞心累了，将就..."></p>
+<ul>
+<li><strong>Git</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git　　 //安装git</span><br><span class="line">git config --global user.name <span class="string">"amilyxy"</span>　　//指定机器上Git仓库配置</span><br><span class="line">git config --global user.eamil <span class="string">"email address"</span>　　</span><br><span class="line">ssh-keygen -C <span class="string">'email address'</span> -t rsa　　//创建ssh验证文件</span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">gedit id_rsa.pub　　//复制粘贴到你的github SSH keys中</span><br><span class="line">ssh -T git@github.com　　//验证</span><br></pre></td></tr></table></figure>
+Hi amilyxy! You’ve successfully authenticated, but GitHub does not provide shell access.<br>安装完成，顺便说一句，git配上zsh主题真是颜值蹭蹭蹭往上加..</li>
+</ul>
+<hr>
+<p>以下是在Ubuntu16.04LTS版本下安装方法，更高版本软件中心不可用，自行命令行编译….这也是我重装的原因，很心累….</p>
+<hr>
+<p><strong>更新Ubuntu 18.04：</strong><br>不得不说Ubuntu18.04界面相对于前版本顺眼许多，<a href="https://zhuanlan.zhihu.com/p/41708902" target="_blank" rel="noopener">贴一个Ubuntu18.04配置链接</a>。</p>
+<ul>
+<li><strong>踩坑一</strong><br>在执行<code>sudo apt-get update</code>或者使用ppa安装软件时提示出错。<br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/13.png" alt="zsh提示出错"><br>原因：ppa(Personal Package Archives)即个人软件包档案，是一种非稳定版本，既然找不到ubuntu-wine源，请打开软件与更新设置，将该软件源remove<br><img src="/images/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/14.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/11/%E5%85%B3%E4%BA%8Ekeil-MDK/" rel="next" title="关于keil_MDK">
+                <i class="fa fa-chevron-left"></i> 关于keil_MDK
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/18/%E5%85%B3%E4%BA%8E%E4%BF%9D%E7%A0%94-%E6%9C%AA%E6%9D%A5%E7%9A%84%E8%B7%AF%E5%B8%8C%E6%9C%9B%E8%87%AA%E5%B7%B1%E5%A5%BD%E5%A5%BD%E8%B5%B0/" rel="prev" title="关于保研-未来的路希望自己好好走">
+                关于保研-未来的路希望自己好好走 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="amilyxy" />
+            
+              <p class="site-author-name" itemprop="name">amilyxy</p>
+              <p class="site-description motion-element" itemprop="description">我一个人看书写信，到处走走停停</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/amilyxy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两天我重装了五次系统你敢信的吗"><span class="nav-number">1.</span> <span class="nav-text">两天我重装了五次系统你敢信的吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu必备软件安装（备忘录）"><span class="nav-number">2.</span> <span class="nav-text">ubuntu必备软件安装（备忘录）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">amilyxy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

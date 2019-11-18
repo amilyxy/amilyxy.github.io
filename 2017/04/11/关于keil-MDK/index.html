@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="近来上ARM选修课找老师借了STM32来玩玩，准确来说是一块集成icore3和CycloneIV的双核心板。　之前一直以为keil是专门为51单片机而设计的，没想到比想象中的要强大(怪我太辣鸡==)，C语言是独立于指令集的高级语言，大部分情况下代码都是一致的，但是不同单片机厂商和各家的IDE头文件定义形式不同或者编译器解释(编译)差别等等，造成了不同的开发环境，就好比用IAR也能开发51一样。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于keil_MDK">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2017&#x2F;04&#x2F;11&#x2F;%E5%85%B3%E4%BA%8Ekeil-MDK&#x2F;index.html">
+<meta property="og:site_name" content="amilyxy&#39;Blog">
+<meta property="og:description" content="近来上ARM选修课找老师借了STM32来玩玩，准确来说是一块集成icore3和CycloneIV的双核心板。　之前一直以为keil是专门为51单片机而设计的，没想到比想象中的要强大(怪我太辣鸡==)，C语言是独立于指令集的高级语言，大部分情况下代码都是一致的，但是不同单片机厂商和各家的IDE头文件定义形式不同或者编译器解释(编译)差别等等，造成了不同的开发环境，就好比用IAR也能开发51一样。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;9.png">
+<meta property="og:updated_time" content="2019-11-18T12:44:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;keil&#x2F;1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/11/关于keil-MDK/"/>
+
+
+
+
+
+  <title>关于keil_MDK | amilyxy'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">amilyxy'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">安静的才是苦口良药</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/11/%E5%85%B3%E4%BA%8Ekeil-MDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="amilyxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="amilyxy'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于keil_MDK</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-11T23:35:13+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E9%82%A3%E4%BA%9B%E4%BA%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">单片机那些事</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　近来上ARM选修课找老师借了STM32来玩玩，准确来说是一块集成icore3和CycloneIV的双核心板。<br>　之前一直以为<del>keil是专门为51单片机而设计的</del>，没想到比想象中的要强大(怪我太辣鸡==)，C语言是独立于指令集的高级语言，大部分情况下代码都是一致的，但是不同单片机厂商和各家的IDE头文件定义形式不同或者编译器解释(编译)差别等等，造成了不同的开发环境，就好比用IAR也能开发51一样。<br>　新手刚开始接触STM32F407，以最简单的LED闪烁来说说keilMDK的工程创建步骤：</p>
+<h4 id="1-下载标准固件库"><a href="#1-下载标准固件库" class="headerlink" title="1.下载标准固件库"></a>1.下载标准固件库</h4><p>　ST官方提供的固件库实际上就是一些底层，提供用户函数调用的接口，减少了用户对寄存器的直接操作。<br><img src="/images/keil/1.png" alt="STM32F4xx_DSP_StdPeriph_Lib_V1.8.0—固件库内容"></p>
+<ul>
+<li><strong>Libraries</strong> 里面是驱动库的源代码及启动文件</li>
+<li><strong>Project</strong> 用驱动库写的例子和工程模板</li>
+<li><strong>Utilities</strong> 官方评估板对应的一些源码，和第三方软件库，如emwin图形软件库、fatfs文件系统</li>
+<li><strong>.chm</strong> 是固件库帮助文档</li>
+</ul>
+<h4 id="2-创建自己的工程模板"><a href="#2-创建自己的工程模板" class="headerlink" title="2.创建自己的工程模板"></a>2.创建自己的工程模板</h4><p>　合理的工程结构使得开发变得简单维护起来也比较方便，首先说明几个建立工程模板所必要的文件</p>
+<ul>
+<li><strong>core_cm4.h</strong> 提供进入M4内核接口</li>
+<li><strong>stm32f4xx.h</strong> 是 STM32F4 片上外设访问层头文件</li>
+<li><strong>system_stm32f4xx.h</strong> 片上外设接入层系统头文件，主要是申明设置系统及总线时钟相关的函数,、对应的<strong>system_stm32f4xx.c</strong>是在系统启动的时候用来设置系统的整个系统和总线时钟。</li>
+<li><strong>stm32f4xx_it.c、stm32f4xx_it.h</strong> 中断相关</li>
+<li><strong>stm32f4xx_conf.h</strong> 外设驱动配置</li>
+<li><strong>stm32f3xx_rcc.c 和 stm32f4xx_rcc.h</strong> 是与 RCC 相关的一些操作函数</li>
+<li><strong>startup_stm32f40_41xxx.s</strong> 重要的启动文件</li>
+</ul>
+<p>下面就来建立一个自己的工程模板，首先建立下面几个文件夹：<br><img src="/images/keil/2.png" alt="模板目录"><br>　其中<code>DERIVER</code>用来放置外设库文件以及启动文件（将 \Libraries 下的STM32F4xx_StdPeriph_Driver复制到其中），<code>MDK-ARM</code>用来放置工程文件，<code>USER</code>则是用户自己创建的自定义功能文件<br>　这里要注意一点，可以删除<code>main.h</code>，将stm32f4xx_it.c中间的<code>#include &quot;main.h&quot;</code>以及<code>SysTick_Handler()</code>函数里面的<code>TimingDelay_Decrement()</code>函数注释掉即可</p>
+<p><img src="/images/keil/3.png" alt="在CMSIS文件夹下添加如下文件"></p>
+<p>　下面正式建立一个工程，类似51单片机建立步骤将工程放在MDK-ARM目录下，具体可以省略了，弹出的<em>Mnange Run</em> 窗口点击 <em>Cancel</em><br>　在左栏工程目录下右键选择 <em>Manage Projct Iterms</em> 并添加如图所示的源文件<br><img src="/images/keil/4.png" alt=""></p>
+<p><img src="/images/keil/5.png" alt=""></p>
+<h4 id="3-LED实现"><a href="#3-LED实现" class="headerlink" title="3.LED实现"></a>3.LED实现</h4><p>贴一波程序….实现LED闪烁还是比较容易的，主要利用官方给的底层就行.</p>
+<p><img src="/images/keil/6.png" alt="LED循环闪烁"></p>
+<h4 id="4-折腾了好久的小问题"><a href="#4-折腾了好久的小问题" class="headerlink" title="4.折腾了好久的小问题"></a>4.折腾了好久的小问题</h4><ul>
+<li>编译提示无法打开.o文件，后面跟着一大串的地址，比如 C:\User\王某某.…..<br>连编译一个最简单的 <em>main</em> 加 <em>while(1)</em> 循环老是出错</li>
+</ul>
+<blockquote>
+<p>Fatal error: L6002U: Could not open file main.o: No such file or directory</p>
+</blockquote>
+<p>　<code>.o</code>后缀文件是编译过程中产生的，每个文件都生成.o文件，再把所有的.o文件链接成最后的执行程序，具体解决方法是，在电脑的高级系统设置下修改环境变量temp和tmp</p>
+<p><img src="/images/keil/7.png" alt=""><br>　C:\useramily这个是文件夹名可以随意，但是可能你发现修改了这个之后依然无法成功编译，重点在这，你需要先在C盘创建这个文件夹，然后再修改！！！这个坑跳了半天才跳出来….</p>
+<ul>
+<li>提示 .initialize=initialize 不是一个预期的表达式<br>程序本身我检查了数遍，没有问题！！对比了例程发现！！在工程设置中Target中有一个设置不一样..哭晕</li>
+</ul>
+<p><img src="/images/keil/8.png" alt="报错内容"><br><img src="/images/keil/9.png" alt="填入--c99"><br>　在 <em>Option for target</em> 的 <em>Target</em> 下填入如图内容，<strong>使其支持–c99标准</strong>，编译就能通过，所以我不得不去查一下 <code>--c99</code> 的含义…</p>
+<blockquote>
+<p>C99是在C89/90的基础上发展起来的，增加了基本数据类型、关键字和一些系统函数等<br>　比如支持可变参数的宏定义<br>　新增了一种结构体/数组的初始化方式，名叫designated initializers 即：<br>　struct { int a[3], b; } w[] ={ [0].a = {1}, [1].a[0] = 2 };[9]<br>还有很多很多，有想法可以去看看~</p>
+</blockquote>
+<p>　找到这个原因之后，想了想自己也接触了一年的单片机竟然连这个都不知道，尽管无数次使用Keil编程，但是真真的熟悉里面的工程配置，ROM地址，汇编标准什么的了解的实在够少，不管是我还是身边的人，学习单片机嵌入式FPGA学习IDE环境，都只是简单的了解创建工程..反正..能用就行，不是么…才疏学浅~</p>
+<p>🙂 如果还碰到稀奇古怪的问题，我就干脆单独拿一篇文章来写问题好了….</p>
+<hr>
+<p>哇，久违的写文章，实在是被这个创建工程弄的很烦，下一个可以考虑  vivado 工程创建。<br>2016/4/11<br>　　　　amilyxy</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/30/%E5%A4%87%E5%BF%98%E5%BD%95-bash%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="next" title="备忘录-bash快捷键">
+                <i class="fa fa-chevron-left"></i> 备忘录-bash快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/24/%E4%B8%A4%E5%A4%A9%E6%88%91%E8%A3%85%E4%BA%86%E4%BA%94%E6%AC%A1%E7%B3%BB%E7%BB%9F%E4%BD%A0%E6%95%A2%E4%BF%A1%E7%9A%84%E5%90%97/" rel="prev" title="两天我装了五次系统你敢信的吗">
+                两天我装了五次系统你敢信的吗 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="amilyxy" />
+            
+              <p class="site-author-name" itemprop="name">amilyxy</p>
+              <p class="site-description motion-element" itemprop="description">我一个人看书写信，到处走走停停</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/amilyxy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-下载标准固件库"><span class="nav-number">1.</span> <span class="nav-text">1.下载标准固件库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-创建自己的工程模板"><span class="nav-number">2.</span> <span class="nav-text">2.创建自己的工程模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-LED实现"><span class="nav-number">3.</span> <span class="nav-text">3.LED实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-折腾了好久的小问题"><span class="nav-number">4.</span> <span class="nav-text">4.折腾了好久的小问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">amilyxy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
