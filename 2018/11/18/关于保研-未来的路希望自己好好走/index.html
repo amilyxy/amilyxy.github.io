@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="en">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,18 +60,22 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
 
 
 
@@ -86,14 +90,14 @@
 
 
 
-<meta name="description" content="在五月份开始找教授写推荐信，报名夏令营，五六月每个学校的夏令营报名通道差不多都开启啦，大概是七月上旬开始参加夏令营和预报名，有过激情有过厌倦，到此尘埃落定,跑上来说说保研的一些心得体会吧。　　通信工程，本科河海大学，未来华南理工研究生。　　我保研选择的学校次序是位置－学校－专业，当时一心奔着南京和长沙的985学校去，所以北方和西边很多通信专业好的211、985学校也没有报名，像成电，西电，重大，川">
+<meta name="description" content="尘埃落定">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于保研-未来的路希望自己好好走">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;11&#x2F;18&#x2F;%E5%85%B3%E4%BA%8E%E4%BF%9D%E7%A0%94-%E6%9C%AA%E6%9D%A5%E7%9A%84%E8%B7%AF%E5%B8%8C%E6%9C%9B%E8%87%AA%E5%B7%B1%E5%A5%BD%E5%A5%BD%E8%B5%B0&#x2F;index.html">
 <meta property="og:site_name" content="amilyxy&#39;Blog">
-<meta property="og:description" content="在五月份开始找教授写推荐信，报名夏令营，五六月每个学校的夏令营报名通道差不多都开启啦，大概是七月上旬开始参加夏令营和预报名，有过激情有过厌倦，到此尘埃落定,跑上来说说保研的一些心得体会吧。　　通信工程，本科河海大学，未来华南理工研究生。　　我保研选择的学校次序是位置－学校－专业，当时一心奔着南京和长沙的985学校去，所以北方和西边很多通信专业好的211、985学校也没有报名，像成电，西电，重大，川">
+<meta property="og:description" content="尘埃落定">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-18T12:34:16.000Z">
+<meta property="og:updated_time" content="2019-11-19T02:55:01.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -102,7 +106,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -332,6 +336,10 @@
           
 
           
+              <div class="post-description">
+                  尘埃落定
+              </div>
+          
 
         </div>
       </header>
@@ -480,9 +488,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/uploads/avatar.jpg"
-                alt="amilyxy" />
+              <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="/uploads/avatar.jpg"
+                  alt="amilyxy" />
+              </a>
             
               <p class="site-author-name" itemprop="name">amilyxy</p>
               <p class="site-description motion-element" itemprop="description">我一个人看书写信，到处走走停停</p>
@@ -589,7 +599,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -636,6 +646,8 @@
   
 
 
+  
+
 
 
 
@@ -676,6 +688,11 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
 
   
 
@@ -688,13 +705,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

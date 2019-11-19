@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="en">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,18 +60,22 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
 
 
 
@@ -86,19 +90,19 @@
 
 
 
-<meta name="description" content="写在前面：　　之前也尝试解决过，弄了好几次都不行，也就半途而废了，最近在打DataFountain上的比赛，数据比较多，用英文代替着实为难我，今天终于解决了~       一、 实验环境：　　python3.6 + pycharm&#x2F;zsh　　pycharm和命令行环境下我都试了，无法显示中文，本质还是在matplotlib二、具体步骤    修改matplotlibrc文件matplotlib包默">
+<meta name="description" content="老虎不发威，你以为我还解决不了你？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="matplotlib画图不显示中文">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;25&#x2F;matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87&#x2F;index.html">
 <meta property="og:site_name" content="amilyxy&#39;Blog">
-<meta property="og:description" content="写在前面：　　之前也尝试解决过，弄了好几次都不行，也就半途而废了，最近在打DataFountain上的比赛，数据比较多，用英文代替着实为难我，今天终于解决了~       一、 实验环境：　　python3.6 + pycharm&#x2F;zsh　　pycharm和命令行环境下我都试了，无法显示中文，本质还是在matplotlib二、具体步骤    修改matplotlibrc文件matplotlib包默">
+<meta property="og:description" content="老虎不发威，你以为我还解决不了你？">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87&#x2F;1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87&#x2F;2.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87&#x2F;3.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87&#x2F;4.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87&#x2F;5.png">
-<meta property="og:updated_time" content="2019-11-18T12:24:06.000Z">
+<meta property="og:updated_time" content="2019-11-19T02:56:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87&#x2F;1.png">
 
@@ -108,7 +112,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -338,6 +342,10 @@
           
 
           
+              <div class="post-description">
+                  老虎不发威，你以为我还解决不了你？
+              </div>
+          
 
         </div>
       </header>
@@ -455,9 +463,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/uploads/avatar.jpg"
-                alt="amilyxy" />
+              <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="/uploads/avatar.jpg"
+                  alt="amilyxy" />
+              </a>
             
               <p class="site-author-name" itemprop="name">amilyxy</p>
               <p class="site-description motion-element" itemprop="description">我一个人看书写信，到处走走停停</p>
@@ -548,7 +558,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -595,6 +605,8 @@
   
 
 
+  
+
 
 
 
@@ -635,6 +647,11 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
 
   
 
@@ -647,13 +664,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

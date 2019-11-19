@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="en">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,18 +60,22 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
 
 
 
@@ -86,15 +90,15 @@
 
 
 
-<meta name="description" content="css权重　　经常会遇到这样一种问题，为什么我写的css并没有达到我所期望的效果，很奇怪我注释掉这行代码对页面并没有什么影响–　　也是自己对css规则并没有一个透彻的了解..　　这里就来简单写一下关于css的权重，我觉得了解了权重的概念，能让你写css时更加得心应手，减少一些代码冗余和调试时间　　权重也就是你这个元素选择器能PK掉其他选择器的几率，当然权重大的就能被浏览器在页面元素上应用（相同权重">
+<meta name="description" content="强迫症害死人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS权重">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2016&#x2F;09&#x2F;09&#x2F;CSS%E6%9D%83%E9%87%8D&#x2F;index.html">
 <meta property="og:site_name" content="amilyxy&#39;Blog">
-<meta property="og:description" content="css权重　　经常会遇到这样一种问题，为什么我写的css并没有达到我所期望的效果，很奇怪我注释掉这行代码对页面并没有什么影响–　　也是自己对css规则并没有一个透彻的了解..　　这里就来简单写一下关于css的权重，我觉得了解了权重的概念，能让你写css时更加得心应手，减少一些代码冗余和调试时间　　权重也就是你这个元素选择器能PK掉其他选择器的几率，当然权重大的就能被浏览器在页面元素上应用（相同权重">
+<meta property="og:description" content="强迫症害死人">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.smashingmagazine.com&#x2F;wp-content&#x2F;uploads&#x2F;2010&#x2F;10&#x2F;overriding-styles.jpg">
-<meta property="og:updated_time" content="2019-11-18T12:30:41.000Z">
+<meta property="og:updated_time" content="2019-11-19T02:59:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.smashingmagazine.com&#x2F;wp-content&#x2F;uploads&#x2F;2010&#x2F;10&#x2F;overriding-styles.jpg">
 
@@ -104,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -334,6 +338,10 @@
           
 
           
+              <div class="post-description">
+                  强迫症害死人
+              </div>
+          
 
         </div>
       </header>
@@ -474,9 +482,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/uploads/avatar.jpg"
-                alt="amilyxy" />
+              <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="/uploads/avatar.jpg"
+                  alt="amilyxy" />
+              </a>
             
               <p class="site-author-name" itemprop="name">amilyxy</p>
               <p class="site-description motion-element" itemprop="description">我一个人看书写信，到处走走停停</p>
@@ -583,7 +593,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -630,6 +640,8 @@
   
 
 
+  
+
 
 
 
@@ -670,6 +682,11 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
 
   
 
@@ -682,13 +699,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
