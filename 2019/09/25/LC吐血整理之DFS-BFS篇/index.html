@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="人生苦短 我学python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LC吐血整理之DFS&amp;BFS篇">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;25&#x2F;LC%E5%90%90%E8%A1%80%E6%95%B4%E7%90%86%E4%B9%8BDFS-BFS%E7%AF%87&#x2F;index.html">
+<meta property="og:site_name" content="amilyxy&#39;Blog">
+<meta property="og:description" content="人生苦短 我学python">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-20T12:18:03.000Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/25/LC吐血整理之DFS-BFS篇/"/>
+
+
+
+
+
+  <title>LC吐血整理之DFS&BFS篇 | amilyxy'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">amilyxy'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">安静的才是苦口良药</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/LC%E5%90%90%E8%A1%80%E6%95%B4%E7%90%86%E4%B9%8BDFS-BFS%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="amilyxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="amilyxy'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LC吐血整理之DFS&BFS篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T12:53:15+08:00">
+                2019-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leecode%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93%F0%9F%8E%88/" itemprop="url" rel="index">
+                    <span itemprop="name">leecode刷题总结🎈</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  人生苦短 我学python
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>所有题解方法请移步 <a href="https://github.com/amilyxy/Leecode_summary" target="_blank" rel="noopener">github-Leecode_summary</a>  </p>
+<h3 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200. 岛屿数量"></a>200. 岛屿数量</h3><p> 三个字：不会做，没有什么好的思路，虽然理解了题目的意思，但是真的没法用程序表达出来，也是一种绝望啊~<br>话不多说，直接进入题解，讲一讲学到的知识吧:　<a href="http://www.pianshen.com/article/172962944/" target="_blank" rel="noopener">参考资料：Flood Fill</a><br><strong>今日份重要的Tips:</strong><br>以下针对的都是无向图，且图已经用邻接矩阵表示。</p>
+<h4 id="DFS"><a href="#DFS" class="headerlink" title="DFS:"></a>DFS:</h4><ul>
+<li><strong>概念理解</strong>  <blockquote>
+<p>DFS(Deep First Search) 深度优先搜索：是一种用于遍历或者搜索树和图的算法，属于盲目搜索。@wiki<br>　　沿着树的深度遍历树的节点，尽可能深的搜索树的分支，如果没有节点可以搜索，将回溯到发现该节点的“源节点”，直到访问完从源节点可达到的所有节点。(递归下去，回溯上来)<br>　　此刻若发现还有未访问的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。</p>
+</blockquote>
+</li>
+<li><strong>实现方法</strong><br>类似于树的先序遍历<br>使用堆栈结构-先进后出<br>实例：寻找迷宫出口（不撞南墙不回头）,目标明确，就是为了找出口</li>
+<li><strong>算法思路</strong> <code>python</code><br>递归实现 ⬇<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">假设graph大小为m*n </span></span><br><span class="line"><span class="string">graph[i][j]: 情况一：有值   比如 1:可访问单元  0：该单元不可访问 </span></span><br><span class="line"><span class="string">             情况二：无值（所有单元均可访问，也就是迷宫没有障碍物）</span></span><br><span class="line"><span class="string">marked[m][n]: 用于标记graph上哪些点走过</span></span><br><span class="line"><span class="string">directions: 用于实现左上右下的移动</span></span><br><span class="line"><span class="string">state(graph[i][j]) = S：graph[i][j]满足某种状态/条件S</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">directions = [(<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>)]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(graph)</span>:</span></span><br><span class="line">    marked = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)] <span class="keyword">for</span> ) <span class="keyword">in</span> range(n)]     </span><br><span class="line">    <span class="comment"># 图不连通需要遍历整张图</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            //相应dfs条件//</span><br><span class="line">            dfs(graph, marked, i, j)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(graph, marked, i, j)</span>:</span></span><br><span class="line">    marked[new_i][new_j] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> state(graph[i][j]) = S：</span><br><span class="line">     // 相应处理</span><br><span class="line">     <span class="comment"># 接下来进行DFS搜索</span></span><br><span class="line">    <span class="keyword">for</span> direc <span class="keyword">in</span> directions:</span><br><span class="line">        new_i = i+direc[<span class="number">0</span>]</span><br><span class="line">        new_j = j+direc[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span>&lt;=new_i&lt;m) <span class="keyword">and</span> (<span class="number">0</span>&lt;=new_j&lt;n) <span class="keyword">and</span> <span class="keyword">not</span> marked[new_i][new_j] <span class="keyword">and</span> graph[new_i][new_j] == <span class="number">1</span>：</span><br><span class="line">            dfs(graph, marked, new_i, new_j)</span><br><span class="line">            <span class="comment"># marked[new_i][new_j] = 1 是否需要这一步视情况而定</span></span><br></pre></td></tr></table></figure>
+实际上递归非常消耗内存，如果graph过大，容易发生溢出，DFS也可用stack实现<code>queue.append()</code> <code>queue.pop()</code>先进后出，具体可参考BFS  </li>
+</ul>
+<h4 id="BFS"><a href="#BFS" class="headerlink" title="BFS:"></a>BFS:</h4><ul>
+<li><p><strong>概念理解</strong></p>
+<blockquote>
+<p>BFS(Breath First Search) 广度优先搜索：搜索树和图的算法，也是一种盲目搜素。@wiki<br>　　BFS从树的宽度遍历树的节点   </p>
+</blockquote>
+</li>
+<li><p><strong>实现方法</strong><br>类似树的层次遍历<br>使用队列结构（先进先出）<br>实例：寻找迷宫出口的最短路径 ，大范围搜索</p>
+</li>
+<li><p><strong>算法思路</strong> <code>python</code> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">假设graph大小为m*n </span></span><br><span class="line"><span class="string">graph[i][j]: 情况一：有值   比如 1:可访问单元  0：该单元不可访问 </span></span><br><span class="line"><span class="string">             情况二：无值（所有单元均可访问，也就是迷宫没有障碍物）</span></span><br><span class="line"><span class="string">marked[m][n]: 用于标记graph上哪些点走过</span></span><br><span class="line"><span class="string">directions: 用于实现左上右下的移动</span></span><br><span class="line"><span class="string">state(graph[i][j]) = S：graph[i][j]满足某种状态/条件S</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque    <span class="comment"># deque：双向队列</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(graph, marked)</span>:</span></span><br><span class="line">    marked = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)] <span class="keyword">for</span> ) <span class="keyword">in</span> range(n)]     </span><br><span class="line">    <span class="comment"># 如果图不连通，仅靠一次搜索无法遍历整张图，需要外循环（14-17可删）</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            //相应 graph[i][j]条件//</span><br><span class="line">            //相应处理//</span><br><span class="line">            queue = deque()</span><br><span class="line">            queue.append((i, j))    <span class="comment"># 从队列右侧添加</span></span><br><span class="line">            marked[i][j] = <span class="number">1</span>      <span class="comment">#  进队列就标记已访问</span></span><br><span class="line">            <span class="keyword">while</span> queue:</span><br><span class="line">                x, y = queue.popleft()</span><br><span class="line">                <span class="keyword">if</span> state(graph[i][j]) = S: </span><br><span class="line">                  //相关处理//</span><br><span class="line">                <span class="keyword">for</span> direc <span class="keyword">in</span> directions:</span><br><span class="line">                    new_x = x + direc[<span class="number">0</span>]</span><br><span class="line">                    new_y = y + direc[<span class="number">1</span>]</span><br><span class="line">                    <span class="keyword">if</span> (<span class="number">0</span>&lt;=new_x&lt;m) <span class="keyword">and</span> (<span class="number">0</span>&lt;=new_y&lt;n) <span class="keyword">and</span> <span class="keyword">not</span> marked[new_x][new_y] <span class="keyword">and</span> graph[new_x][new_y] == <span class="number">1</span>：</span><br><span class="line">                        queue.append((new_x, new_y))</span><br><span class="line">                        marked[new_x][new_y] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="IDDFS"><a href="#IDDFS" class="headerlink" title="IDDFS:"></a>IDDFS:</h4></li>
+<li><p><strong>概念理解</strong></p>
+<blockquote>
+<p>IDDFS(iterative deepening depth-first search (IDS or IDDFS)) 是对状态空间的搜索策略，它重复地运行一个有深度限制的DFS，每次运行结束后，增加深度并迭代，直到找到目标状态。@wiki<br>　　IDDFS 与BFS有同样的时间复杂度，而空间复杂度远优。（这一点也可以从第130题体现出来）<br>　　IDDFS 第一次访问节点的累积顺序是广度优先的。  </p>
+</blockquote>
+</li>
+<li><p><strong>实现方法</strong><br>迭代过程中记录深度<br>贴几个帖子看看吧，时间有限，我也不深究了<br><a href="https://www.cycode.club/difang/271/" target="_blank" rel="noopener">迭代深化深度优先搜索（IDDFS）</a>  </p>
+</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>两种搜索方法都属于盲目搜索，都不是很难，理解之后就好好的做下面的题吧，不要看题解啦 !   </p>
+<h3 id="130-被围绕的区域"><a href="#130-被围绕的区域" class="headerlink" title="130.被围绕的区域"></a>130.被围绕的区域</h3><p>不得不说，总结一下DFS和BFS还是挺有用的，今天<del>做题很迅速</del> (假的，今天是的是队列去存储 ‘X’2‘O’ 的单元格。<br><strong>今日份的small Tips:</strong>  关于deque基本操作，有机会再补充</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deque 为双向队列</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">queue = deque()</span><br><span class="line"><span class="comment"># 在双向队列的右边/左边添加</span></span><br><span class="line">queue.append() / queue.appendleft()</span><br><span class="line"><span class="comment"># 删除所有queue元素</span></span><br><span class="line">queue.clear()</span><br><span class="line"><span class="comment"># 在双向队列的右边/左边删除并返回一个元素</span></span><br><span class="line">queue.pop() / queue.popleft()</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"><span class="comment">### 127.单词接龙    </span></span><br><span class="line"><span class="comment">####踩坑记录：  </span></span><br><span class="line">是这样的，刚开始看到关键词-“找 **最短** 转换序列”，瞬间想到用BFS求最短路径去做，但在做的过程中发现用队列BFS方法似乎没办法轻松的求深度，也就是这个最短路径到底是多短，后来尝试了记录每一层的进队列出队列数去计算深度，写是写出来了，无奈运行第<span class="number">30</span>个测试用例的时候超出时长限制，我太难了...</span><br><span class="line">　　踩了几个坑，对BFS有更深的了解：</span><br><span class="line"><span class="comment">##### 1. 循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）  </span></span><br><span class="line"></span><br><span class="line">```Python  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> a:           /   <span class="keyword">for</span> i <span class="keyword">in</span> a[::<span class="number">-1</span>]:</span><br><span class="line"><span class="meta">... </span>       a.remove(i)            a.remove(i)</span><br><span class="line"><span class="meta">... </span>       print(a)               print(a) </span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]    </span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">期望输出：<span class="comment"># 其实是期望来一个删一个</span></span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">[<span class="number">4</span>]</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解决方案：<br>　　<strong>1.</strong> 定义一个空列表用来保存for循环中需要删除的值，出循环之后统一<code>remove()</code><br>　　<strong>2.</strong> 倒序删除（推荐！）  <h6 id="2-队列的赋值操作"><a href="#2-队列的赋值操作" class="headerlink" title="2.  队列的赋值操作"></a>2.  队列的赋值操作</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">queue = deque()</span><br><span class="line">queue_next = deque()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    queue.append(i)</span><br><span class="line">queue_next = queue</span><br><span class="line">queue_next:  deque([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">queue.pop()</span><br><span class="line">queue_next:  deque([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+以上涉及到一个问题：Python中对象的赋值、浅拷贝、深拷贝<br>① python中，赋值是建立对象的引用<br>　　不可变数据类型(Numbers、String、Tuple): 赋值后如果更改变量，会创建一个新值，同时改变内存地址。<br>　　可变数据类型(List、Dict): 内存地址保持不变</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">"amilyxy"</span>  / a = [<span class="string">"amilyxy"</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)   </span><br><span class="line"><span class="number">139863454833944</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)   </span><br><span class="line"><span class="number">139863454833944</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b +=<span class="string">" go!"</span>  /  b .append(<span class="string">" go!"</span>)</span><br><span class="line"> <span class="string">'amilyxy go!'</span>  /  [<span class="string">'amilyxy'</span>, <span class="string">' go!'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">"amilyxy"</span>  /  [<span class="string">'amilyxy'</span>, <span class="string">' go!'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)   </span><br><span class="line"><span class="number">139863455613104</span>  / ab一样</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)   </span><br><span class="line"><span class="number">139863454833944</span></span><br></pre></td></tr></table></figure>
+<p>② 浅拷贝：浅拷贝创建新对象，内容是原对象的引用<br>　三种形式：切片<code>b = a[:]</code> 、copy() <code>b = a.copy()</code>、工厂函数<code>b = list(a)</code><br>　<strong>注意:</strong> 浅拷贝只拷贝了父对象，其子对象是引用，指向统一内存空间 ,详情看下面代码段。<br>③ 深拷贝：完全拷贝其父对象和子对象  </p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@ 实例源自菜鸟课程</span><br><span class="line">import copy</span><br><span class="line"><span class="keyword">a</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]] <span class="comment">#原始对象</span></span><br><span class="line"> </span><br><span class="line">b = <span class="keyword">a</span>                       <span class="comment">#赋值，传对象的引用</span></span><br><span class="line">c = copy.copy(<span class="keyword">a</span>)            <span class="comment">#对象拷贝，浅拷贝</span></span><br><span class="line">d = copy.deepcopy(<span class="keyword">a</span>)        <span class="comment">#对象拷贝，深拷贝</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">a</span>.append(<span class="number">5</span>)                 <span class="comment">#修改对象a</span></span><br><span class="line"><span class="keyword">a</span>[<span class="number">4</span>].append(<span class="string">'c'</span>)            <span class="comment">#修改对象a中的['a', 'b']数组对象</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">a</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>]</span><br><span class="line">b = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>]</span><br><span class="line">c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]]</span><br><span class="line">d = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解决方案<br>　　<strong>1.</strong> 使用<code>copy()</code>或者<code>deepcopy()</code><br>　　<strong>2.</strong>   重新声明  <h5 id="3-关于python中set"><a href="#3-关于python中set" class="headerlink" title="3. 关于python中set()"></a>3. 关于python中set()</h5>①  python中set和dict是一个无序不重复元素集<br>② set.add() 插入位置是不定<br>③  set.pop() 出来的是最左边的元素<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">"amilyxy"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = set(a)</span><br><span class="line">&#123;<span class="string">'i'</span>, <span class="string">'a'</span>, <span class="string">'m'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.add(<span class="string">"hello"</span>)</span><br><span class="line">&#123;<span class="string">'i'</span>, <span class="string">'a'</span>, <span class="string">'m'</span>, <span class="string">'hello'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.pop()</span><br><span class="line"><span class="string">'i'</span></span><br></pre></td></tr></table></figure>
+<h5 id="今日份的Tips："><a href="#今日份的Tips：" class="headerlink" title="今日份的Tips："></a>今日份的Tips：</h5></li>
+<li><strong>Tips-1</strong>：BFS深度<br>来了来了，看完题解发现有人跟我思路相差无几哈哈哈，借鉴一下他的深度的记录方法。<pre><code class="Python"><span class="string">'''</span>
+<span class="string">state(graph[i][j]) = S：graph[i][j]满足某种状态/条件S</span>
+<span class="string">'''</span>
+<span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">()</span>:</span>
+  queue = deque()
+  queue.append(begin)
+  depth = <span class="number">1</span>
+  <span class="keyword">while</span> queue:
+      n = len(queue)
+      <span class="keyword">for</span> _ <span class="keyword">in</span> range(n):
+          temp= queue.popleft()
+          <span class="keyword">if</span> state(graph[i][j]) = S:
+              // 相应处理
+          //all_node = 搜索该节点下层所有节点
+          // queue.append(all_node)
+      depth += <span class="number">1</span>
+      <span class="keyword">return</span> <span class="number">0</span></code></pre>
+</li>
+<li><strong>Tips-2</strong>：TimeComplexity<br>① 简直amazing，上面说了我的方法一直超时，也是没有考虑到list和set中<code>x in s</code>操作时间复杂度问题。<br>② list、set、dict、queue 时间复杂度指路→<a href="https://wiki.python.org/moin/TimeComplexity" target="_blank" rel="noopener">TimeComplexity</a><br>总而言之：<strong>“判断值是否存在，一定不要用list，时间复杂度为O(n)，而set和dict由于用hash实现，时间复杂度为O(1)”</strong>  </li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/20/LC%E5%90%90%E8%A1%80%E6%95%B4%E7%90%86%E4%B9%8BMatrix%E7%AF%87/" rel="next" title="LC吐血整理之Matrix篇">
+                <i class="fa fa-chevron-left"></i> LC吐血整理之Matrix篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/25/matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/" rel="prev" title="matplotlib画图不显示中文">
+                matplotlib画图不显示中文 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="/uploads/avatar.jpg"
+                  alt="amilyxy" />
+              </a>
+            
+              <p class="site-author-name" itemprop="name">amilyxy</p>
+              <p class="site-description motion-element" itemprop="description">我一个人看书写信，到处走走停停</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/amilyxy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#200-岛屿数量"><span class="nav-number">1.</span> <span class="nav-text">200. 岛屿数量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DFS"><span class="nav-number">1.1.</span> <span class="nav-text">DFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFS"><span class="nav-number">1.2.</span> <span class="nav-text">BFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDDFS"><span class="nav-number">1.3.</span> <span class="nav-text">IDDFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#130-被围绕的区域"><span class="nav-number">2.</span> <span class="nav-text">130.被围绕的区域</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-队列的赋值操作"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">2.  队列的赋值操作</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-关于python中set"><span class="nav-number">2.0.1.</span> <span class="nav-text">3. 关于python中set()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#今日份的Tips："><span class="nav-number">2.0.2.</span> <span class="nav-text">今日份的Tips：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">amilyxy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

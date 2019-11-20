@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="人生苦短 我学python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LC吐血整理-Array篇">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;08&#x2F;27&#x2F;LC%E5%90%90%E8%A1%80%E6%95%B4%E7%90%86-Array%E7%AF%87&#x2F;index.html">
+<meta property="og:site_name" content="amilyxy&#39;Blog">
+<meta property="og:description" content="人生苦短 我学python">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-20T09:54:22.000Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/27/LC吐血整理-Array篇/"/>
+
+
+
+
+
+  <title>LC吐血整理-Array篇 | amilyxy'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">amilyxy'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">安静的才是苦口良药</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/LC%E5%90%90%E8%A1%80%E6%95%B4%E7%90%86-Array%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="amilyxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="amilyxy'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LC吐血整理-Array篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-27T10:46:38+08:00">
+                2019-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leecode%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93%F0%9F%8E%88/" itemprop="url" rel="index">
+                    <span itemprop="name">leecode刷题总结🎈</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  人生苦短 我学python
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>所有题解方法请移步 <a href="https://github.com/amilyxy/Leecode_summary" target="_blank" rel="noopener">github-Leecode_summary</a>  </p>
+<h3 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h3><p>　　hash() 用于获取取一个对象（字符串或者数值等）的哈希值  </p>
+<blockquote>
+<p>散列表(Hash table，也叫哈希表)，是根据关键码值(Key value)而直接进行访问的数据结构。<br>　　它通过把关键码值(Key)映射到表中一个位置来访问记录，以加快查找的速度，这个映射函数叫做散列函数f(Key)，存放记录的表叫做散列表(M)。给定表M。</p>
+</blockquote>
+<p>第一题的题解方法用dict模拟hash：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">        hashmap = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind,num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            hashmap[num] = ind            <span class="comment"># num不唯一会覆盖  因为题目声明存在唯一解 so who care</span></span><br><span class="line">        <span class="keyword">for</span> i,num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            j = hashmap.get(target - num)      <span class="comment"># 根据key获取value: dict.get(key)/dict[key]</span></span><br><span class="line">            <span class="keyword">if</span> j <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span> <span class="keyword">and</span> i!=j:</span><br><span class="line">                <span class="keyword">return</span> [i,j]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 附： 根据dict的value获取对应的key</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_keys</span><span class="params">(d, value)</span>:</span>  </span><br><span class="line">    <span class="keyword">return</span> [k <span class="keyword">for</span> k,v <span class="keyword">in</span> d.items() <span class="keyword">if</span> v == value]      <span class="comment">#value 可以不唯一</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27. 移除元素"></a>27. 移除元素</h3><p><strong>List.pop(）/ dict.pop()</strong><br>　　删除元素，会把后面的元素往前移。在数组剔除操作中，如果采用正循环，会打乱原有的数组顺序，<strong>建议考虑逆循环</strong><br><strong>list.remove()</strong><br>　　删除列表中首次出现的指定元素，不存在该元素则<strong>抛出异常</strong><br><strong>filter()</strong><br>　　<code>filter(lambda x: x != val, nums)</code> </p>
+<h3 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26. 删除排序数组中的重复项"></a>26. 删除排序数组中的重复项</h3><p>出现了一个重要的问题　<strong>不认真审题</strong>，题目强调是 <strong>排序数组</strong> 和 <strong>不使用额外的数组空间</strong> 所以做题之前还是要有效率的看题 ==<br>数组操作型可以考虑 <strong>双指针</strong> !!<br><strong>set(list)</strong>:<br>　　返回的是一个<strong>无序</strong>和<strong>不重复</strong>序列  </p>
+<h3 id="80-删除排序数组中的重复项-II"><a href="#80-删除排序数组中的重复项-II" class="headerlink" title="80. 删除排序数组中的重复项 II"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank" rel="noopener">80.</a> 删除排序数组中的重复项 II</h3><p>突然觉得想法还是很重要的，像我就只会用最原始最笨重的方法，看了题解之后竟然觉得有点神奇？？？（请叫我菜鸡）<br>　　比如这个题，其实可以拓展到保留k个重复元素，尽量写出来的代码变换需求之后不需要重新写~~  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># range盘点</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>range(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">[ <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>range(<span class="number">0</span>, <span class="number">10</span>, <span class="number">-1</span>)</span><br><span class="line">[<span class="number">0</span>, <span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-3</span>, <span class="number">-4</span>, <span class="number">-5</span>, <span class="number">-6</span>, <span class="number">-7</span>, <span class="number">-8</span>, <span class="number">-9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>range(<span class="number">5</span>, <span class="number">-1</span>, <span class="number">-1</span>)</span><br><span class="line">[<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>range(<span class="number">5</span>, <span class="number">1</span>, <span class="number">-1</span>)</span><br><span class="line">[<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list索引问题</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nums = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nums[<span class="number">-1</span>] </span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nums[<span class="number">-2</span>:]</span><br><span class="line">[ <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>range(: <span class="number">-3</span>)</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="41-缺失的第一个正数"><a href="#41-缺失的第一个正数" class="headerlink" title="41. 缺失的第一个正数"></a>41. 缺失的第一个正数</h3><p>骄傲脸（我觉得我做的方法时间真的很短！虽然题目确实有点简单，既然在题解里面看到有用桶排序做的，那就来了解并学习桶排序吧！  </p>
+<blockquote>
+<p>桶排序(Bucket sort)，也称箱排序<br>工作原理： 将数组分到有限数量的桶，每个桶再个别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序）@wiki<br>通俗理解：一个萝卜一个坑，先把坑占好</p>
+</blockquote>
+<p>今日份<strong>Tips-1:</strong>: 桶排序  </p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码 nums-&gt;list</span></span><br><span class="line">def bucket_sort():</span><br><span class="line">    n: 桶数，可以是<span class="built_in">len</span>(<span class="keyword">a</span>)/<span class="built_in">len</span>(<span class="built_in">max</span>(nums))</span><br><span class="line">    <span class="keyword">for</span> i ← <span class="number">1</span> <span class="built_in">to</span> n</span><br><span class="line">        <span class="built_in">do</span> insert A[i] <span class="keyword">into</span> list B[floor(nA[i])] <span class="comment"># 将n个数分布到各个桶中,根据要求桶里面可能一个数可能多个</span></span><br><span class="line">    <span class="keyword">for</span> i ← <span class="number">0</span> <span class="built_in">to</span> n<span class="number">-1</span></span><br><span class="line">        <span class="built_in">do</span> <span class="built_in">sort</span> list B[i] <span class="keyword">with</span> insertion <span class="built_in">sort</span> <span class="comment"># 对各个桶中的数进行排序</span></span><br><span class="line">    concatenate <span class="keyword">the</span> lists B[<span class="number">0</span>],B[<span class="number">1</span>],...,B[n<span class="number">-1</span>] together <span class="keyword">in</span> order   <span class="comment">#依次串联各桶中的元素</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>贴个链接 🔗 有时间再来写详细的实现代码<br><a href="https://www.jianshu.com/p/1fcf90f18f5e" target="_blank" rel="noopener">python 极简的桶排序代码</a>  </li>
+</ul>
+<p>今日份<strong>Tips-2</strong>: 异或运算实现交换</p>
+<ol>
+<li>多元赋值</li>
+<li>看答案看到一个小trick</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>基于异或交换(a!=b)</th>
+<th>基于加减交换(python中不需考虑溢出)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a = a^b <br> b = a^b <br> a = a^b</td>
+<td>a = a+b <br> b = a-b <br> a = a-b</td>
+</tr>
+</tbody></table>
+<h3 id="299-猜数字游戏"><a href="#299-猜数字游戏" class="headerlink" title="299. 猜数字游戏"></a>299. 猜数字游戏</h3><p>写在前面：<br>　　今天看比赛的baseline的时候，看到一条代码<code>set(A) &amp; set(B)</code>求取AB特征的交集，今天在做这个题目的时候需要用到<code>list(A) &amp; list(B)</code>，但人家<code>list</code>没这个运算啊，所以再用其他方法做题的同时，我暗戳戳的想一定会有什么语法糖！！果然看答案还真有…<br>今日份<strong>Tips-1:</strong>  <code>collections.Counter</code><br>　　collections遇到很多次了，官方文档中解释是 <code>High-performace container datatype</code>(高性能容量数据类型)，用的较多的是<code>defaultdict</code> <code>OrderedDict</code> <code>deque</code>, 还包括 <code>namedtuple</code> <code>Counter</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="comment"># 计数  </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>listA = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = Counter(listA)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict(c)     <span class="comment"># 传统方法可能是遍历计数的方式</span></span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2</span>, <span class="number">3</span>: <span class="number">2</span>, <span class="number">4</span>: <span class="number">2</span>, <span class="number">5</span>: <span class="number">1</span>, <span class="number">6</span>: <span class="number">1</span>, <span class="number">8</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="string">'10'</span>]    <span class="comment"># 不存在即为0</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>listB = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Counter(listA) &amp; Counter(listB)  <span class="comment"># 对应可以求A|B</span></span><br><span class="line">Counter(&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">1</span>, <span class="number">3</span>: <span class="number">1</span>, <span class="number">4</span>: <span class="number">1</span>, <span class="number">5</span>: <span class="number">1</span>, <span class="number">6</span>: <span class="number">1</span>, <span class="number">8</span>: <span class="number">1</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sum((Counter(listA) &amp; Counter(listB)).values())   <span class="comment"># 统计listA和listB中共有的元素个数</span></span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
+<p>给我的感觉Counter就是n个桶，每个桶记录数据，类似桶排序？？更多操作指路 → <a href="https://docs.python.org/2/library/collections.html#collections.Counter" target="_blank" rel="noopener">collections.Counter</a></p>
+<p>剩下的 <code>namedtuple</code>就不多说了，随用随学习  </p>
+<hr>
+<p>@ amilyxy<br>2019.8.27 感觉一个题目做好久啊~~ 坚持！！！！<br>2019.11.5 经历了差不多两个月 终于轮回来了 坚持呀！！！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/18/%E5%85%B3%E4%BA%8E%E4%BF%9D%E7%A0%94-%E6%9C%AA%E6%9D%A5%E7%9A%84%E8%B7%AF%E5%B8%8C%E6%9C%9B%E8%87%AA%E5%B7%B1%E5%A5%BD%E5%A5%BD%E8%B5%B0/" rel="next" title="关于保研-未来的路希望自己好好走">
+                <i class="fa fa-chevron-left"></i> 关于保研-未来的路希望自己好好走
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/05/LC%E5%90%90%E8%A1%80%E6%95%B4%E7%90%86-Math%E7%AF%87/" rel="prev" title="LC吐血整理-Math篇">
+                LC吐血整理-Math篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="/uploads/avatar.jpg"
+                  alt="amilyxy" />
+              </a>
+            
+              <p class="site-author-name" itemprop="name">amilyxy</p>
+              <p class="site-description motion-element" itemprop="description">我一个人看书写信，到处走走停停</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/amilyxy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-两数之和"><span class="nav-number">1.</span> <span class="nav-text">1. 两数之和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-移除元素"><span class="nav-number">2.</span> <span class="nav-text">27. 移除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-删除排序数组中的重复项"><span class="nav-number">3.</span> <span class="nav-text">26. 删除排序数组中的重复项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#80-删除排序数组中的重复项-II"><span class="nav-number">4.</span> <span class="nav-text">80. 删除排序数组中的重复项 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#41-缺失的第一个正数"><span class="nav-number">5.</span> <span class="nav-text">41. 缺失的第一个正数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#299-猜数字游戏"><span class="nav-number">6.</span> <span class="nav-text">299. 猜数字游戏</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">amilyxy</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
