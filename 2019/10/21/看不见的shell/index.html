@@ -93,11 +93,11 @@
 <meta name="description" content="ubuntu不好玩 shell好玩">
 <meta property="og:type" content="article">
 <meta property="og:title" content="看不见的shell">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;%E7%9C%8B%E4%B8%8D%E8%A7%81%E7%9A%84shell&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;21&#x2F;%E7%9C%8B%E4%B8%8D%E8%A7%81%E7%9A%84shell&#x2F;index.html">
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="ubuntu不好玩 shell好玩">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-21T05:22:03.000Z">
+<meta property="og:updated_time" content="2019-11-21T14:33:29.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/21/看不见的shell/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/10/21/看不见的shell/"/>
 
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/%E7%9C%8B%E4%B8%8D%E8%A7%81%E7%9A%84shell/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/%E7%9C%8B%E4%B8%8D%E8%A7%81%E7%9A%84shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="amilyxy">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T21:09:12+08:00">
-                2019-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T21:09:12+08:00">
+                2019-10-21
               </time>
             
 
@@ -354,11 +354,119 @@
       
 
       
-        <p>我好难啊，用了八百遍的命令，一段时间不用就丢回计算机了，为什么记忆不能久一点呢…</p>
-<h3 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h3><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><h4 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h4><ul>
-<li><strong>创建:</strong> <code>ln -s 源目录 目标目录</code><br>如果提示 <strong>cd: 符号连接的层数过多</strong> 创建软链接使用绝对路径</li>
-<li><strong>删除:</strong> <code>rm 目标目录</code>  </li>
-</ul>
+        <p>我好难啊，用了八百遍的命令，一段时间不用就丢回计算机了，为什么记忆不能久一点呢…  </p>
+<h3 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>conda clean -p</td>
+<td>删除下载的库安装包</td>
+</tr>
+<tr>
+<td>conda clean -t</td>
+<td>删除初始的库安装包</td>
+</tr>
+<tr>
+<td>conda create -n name python=x</td>
+<td>创建名为name的python环境，x为python版本号</td>
+</tr>
+<tr>
+<td>conda remove name</td>
+<td>删除名为name的python库</td>
+</tr>
+<tr>
+<td>conda remove -n name –all</td>
+<td>删除名为name的python环境</td>
+</tr>
+<tr>
+<td>conda/source activate name</td>
+<td>激活名为name的python环境</td>
+</tr>
+<tr>
+<td>conda/source deactivate</td>
+<td>退出python环境</td>
+</tr>
+</tbody></table>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ln -s 源目录 目标目录</td>
+<td>创建软链接(如果提示 <strong>cd: 符号连接的层数过多</strong> 使用绝对路径)</td>
+</tr>
+<tr>
+<td>rm 目标目录</td>
+<td>删除软链接</td>
+</tr>
+<tr>
+<td>mv 源文件(夹) 目标目录</td>
+<td>移动文件(夹)</td>
+</tr>
+<tr>
+<td>mv 源目录/* 目标目录</td>
+<td>移动文件夹下所有文件(这个有点坑，最好是带文件夹一起移动)</td>
+</tr>
+<tr>
+<td>cp -r 源目录 目标目录</td>
+<td>拷贝文件夹</td>
+</tr>
+</tbody></table>
+<h3 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>source ~/.zshrc</td>
+<td>激活环境变量</td>
+</tr>
+<tr>
+<td>sudo chown -R username:groupname filesname</td>
+<td>修改文件夹的用户所有者</td>
+</tr>
+<tr>
+<td>sudo chowd rwx files</td>
+<td>修改文件夹读写权限</td>
+</tr>
+<tr>
+<td>sudo passwd userName</td>
+<td>设置密码</td>
+</tr>
+<tr>
+<td>sudo smartctl –all /dev/sda</td>
+<td>查看硬盘 /dev/sda的基本信息</td>
+</tr>
+<tr>
+<td>sudo useradd -m -s /bin/bash XXX</td>
+<td>创建XXX新用户</td>
+</tr>
+<tr>
+<td>sudo adduser XXX</td>
+<td>傻瓜式创建XXX新用户</td>
+</tr>
+<tr>
+<td>sudo userdel -r userName</td>
+<td>彻底删除XXX用户</td>
+</tr>
+<tr>
+<td>kill PID</td>
+<td>杀死进程</td>
+</tr>
+<tr>
+<td>lsof -i：9696</td>
+<td>查看网络端口使用</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -534,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda"><span class="nav-number">1.</span> <span class="nav-text">conda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作"><span class="nav-number">2.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软链接"><span class="nav-number">2.1.</span> <span class="nav-text">软链接</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda"><span class="nav-number">1.</span> <span class="nav-text">conda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作"><span class="nav-number">2.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统相关"><span class="nav-number">3.</span> <span class="nav-text">系统相关</span></a></li></ol></div>
             
 
           </div>
