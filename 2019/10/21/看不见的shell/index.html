@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="ubuntu不好玩 shell好玩">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-21T14:33:29.000Z">
+<meta property="og:updated_time" content="2019-11-22T08:50:04.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <title>看不见的shell | amilyxy'Blog</title>
+  <title>看不见的shell | amilyxy'Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -153,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -391,7 +391,7 @@
 <td>退出python环境</td>
 </tr>
 </tbody></table>
-<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><table>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><h4 id="文件移动-拷贝"><a href="#文件移动-拷贝" class="headerlink" title="文件移动/拷贝"></a>文件移动/拷贝</h4><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -419,6 +419,56 @@
 <td>拷贝文件夹</td>
 </tr>
 </tbody></table>
+<h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sudo chown -R username:groupname filesname</td>
+<td>修改文件夹的用户所有者</td>
+</tr>
+<tr>
+<td>sudo chowd rwx files</td>
+<td>修改文件夹读写权限</td>
+</tr>
+</tbody></table>
+<h4 id="文件解压-打包-zsh-x"><a href="#文件解压-打包-zsh-x" class="headerlink" title="文件解压/打包 (zsh x)"></a>文件解压/打包 (zsh x)</h4><table>
+<thead>
+<tr>
+<th>文件类型</th>
+<th>指令</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.tar</td>
+<td>tar -xvf</td>
+<td><strong>x</strong>:extract <strong>v</strong>:显示执行过程 <strong>f</strong>:指定文件 <strong>t</strong>:列出文件内容</td>
+</tr>
+<tr>
+<td>.gz</td>
+<td>gzip -d/gunzip directory</td>
+<td><strong>c</strong>:保留原始文件</td>
+</tr>
+<tr>
+<td>.tar.gz/.tgz -C directory</td>
+<td>tar -xzf</td>
+<td>tar.gz压缩占用cpu小</td>
+</tr>
+<tr>
+<td>.rar</td>
+<td>unrar x</td>
+<td>需要安装unrar</td>
+</tr>
+<tr>
+<td>.zip</td>
+<td>unzip -d directory</td>
+<td>用的最多的文档格式，压缩率不高，<strong>l</strong>:列出文件内容</td>
+</tr>
+</tbody></table>
 <h3 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h3><table>
 <thead>
 <tr>
@@ -431,12 +481,28 @@
 <td>激活环境变量</td>
 </tr>
 <tr>
-<td>sudo chown -R username:groupname filesname</td>
-<td>修改文件夹的用户所有者</td>
+<td>free -m</td>
+<td>查看内存使用</td>
 </tr>
 <tr>
-<td>sudo chowd rwx files</td>
-<td>修改文件夹读写权限</td>
+<td>nvidia-smi -l</td>
+<td>查看gpu状态 -l持续</td>
+</tr>
+<tr>
+<td>top -p</td>
+<td>查看指定进程号(其实用htop就好)</td>
+</tr>
+<tr>
+<td>ps 进程号</td>
+<td>查看进程详细状态</td>
+</tr>
+<tr>
+<td>df -h</td>
+<td>查看文件系统的磁盘空间占用情况</td>
+</tr>
+<tr>
+<td>fdisk -l</td>
+<td>查看磁盘分区</td>
 </tr>
 <tr>
 <td>sudo passwd userName</td>
@@ -501,8 +567,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/25/matplotlib%E7%94%BB%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/" rel="prev" title="matplotlib画图不显示中文">
-                matplotlib画图不显示中文 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/23/hexo%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" rel="prev" title="hexo中插入数学公式">
+                hexo中插入数学公式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -586,7 +652,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -597,7 +663,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -642,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda"><span class="nav-number">1.</span> <span class="nav-text">conda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作"><span class="nav-number">2.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统相关"><span class="nav-number">3.</span> <span class="nav-text">系统相关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda"><span class="nav-number">1.</span> <span class="nav-text">conda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作"><span class="nav-number">2.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件移动-拷贝"><span class="nav-number">2.1.</span> <span class="nav-text">文件移动/拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限"><span class="nav-number">2.2.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件解压-打包-zsh-x"><span class="nav-number">2.3.</span> <span class="nav-text">文件解压/打包 (zsh x)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统相关"><span class="nav-number">3.</span> <span class="nav-text">系统相关</span></a></li></ol></div>
             
 
           </div>
@@ -843,6 +909,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
