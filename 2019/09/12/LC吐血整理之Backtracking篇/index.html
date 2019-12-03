@@ -99,7 +99,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;back_3.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;back_2.png">
-<meta property="og:updated_time" content="2019-11-20T11:59:14.000Z">
+<meta property="og:updated_time" content="2019-12-01T10:52:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;back_3.png">
 
@@ -369,6 +369,8 @@
 <h3 id="90-子集II"><a href="#90-子集II" class="headerlink" title="90.子集II"></a>90.子集II</h3><p>既然题目要求不能有重复的子集，就要从两个方面着手：<br><strong>1. 找出所有子集-&gt;筛选</strong><br><strong>2. 找子集的过程中主动避免重复</strong><br>　　我就只会做最笨的方法咯，但肯定是有比较trick的方法…（多看多想，总结一下），比如<a href="https://leetcode-cn.com/problems/subsets-ii/solution/tong-ji-pin-ci-zai-zu-he-fa-by-mai-mai-mai-mai-zi/" target="_blank" rel="noopener">统计频数法</a>，又比如<a href="https://leetcode-cn.com/problems/subsets-ii/solution/zai-zi-ji-de-ji-chu-shang-zeng-jia-qu-zhong-python/" target="_blank" rel="noopener">数组排序再组合</a><br>今日份的<strong>Tips:</strong>  list的相等问题：  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]  list2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]  list3 = [<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 == list2        <span class="comment">#  判断严格相等 (元素及顺序相等)</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 == list3       </span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(list1) == sorted(list3)     <span class="comment"># 只要求元素相等  </span></span><br><span class="line">&gt;&gt;&gt;list1.sort() == list3.sort()     <span class="comment">#sorted()生成新的数组/list.sort()对自身改变</span></span><br></pre></td></tr></table></figure>
 <h3 id="77-组合"><a href="#77-组合" class="headerlink" title="77. 组合"></a>77. 组合</h3><p>　　这个题目就是子集的子集？？，还是“换汤不换药”，遍历会了什么都好做，只不过是往上加点条件罢了..不过多撰述了..</p>
+<h3 id="39-组合总数"><a href="#39-组合总数" class="headerlink" title="39.组合总数"></a>39.组合总数</h3><p><strong>用最笨的方法 超最长的时</strong> &gt;&lt;<br>　　刷题刷到现在，看了题解回溯、剪枝，终于有点感觉，在书里面见识的算法是实实在在可以用来解决问题的~ 做题的时候在想，怎么能在append的同时鉴别是否重复呢，但我真的想不到…好菜啊…题解还有动态规划解决方案可以思考一下<br><strong>题解两种遍历：</strong><br>1 全部遍历(包含重复数组)，逐个判断是否符合要求<br>2 从根源上避免重复数组<br><strong>总算是发现了我能理解且复现的方法</strong>:  树与剪枝  <a href="https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/" target="_blank" rel="noopener">参考代码</a><br>另外动态规划方法也蛮不错的，要领会其思想   </p>
+<h3 id="组合总数II"><a href="#组合总数II" class="headerlink" title="组合总数II"></a>组合总数II</h3><p>思考：1.遍历不包括自身 2.怎么剪枝  </p>
 
       
     </div>
@@ -544,7 +546,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#78-子集"><span class="nav-number">1.</span> <span class="nav-text">78. 子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#90-子集II"><span class="nav-number">2.</span> <span class="nav-text">90.子集II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#77-组合"><span class="nav-number">3.</span> <span class="nav-text">77. 组合</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#78-子集"><span class="nav-number">1.</span> <span class="nav-text">78. 子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#90-子集II"><span class="nav-number">2.</span> <span class="nav-text">90.子集II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#77-组合"><span class="nav-number">3.</span> <span class="nav-text">77. 组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39-组合总数"><span class="nav-number">4.</span> <span class="nav-text">39.组合总数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合总数II"><span class="nav-number">5.</span> <span class="nav-text">组合总数II</span></a></li></ol></div>
             
 
           </div>
