@@ -356,8 +356,10 @@
       
         <hr>
 <p>所有题解方法请移步 <a href="https://github.com/amilyxy/Leecode_summary" target="_blank" rel="noopener">github-Leecode_summary</a> </p>
-<h3 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155.最小栈"></a>155.最小栈</h3><p>不知道怎么说，用<code>list</code>的相关属性<code>append</code> <code>pop</code> <code>min</code> <code>list[-1]</code>似乎做的很容易，时间上也过得去，不知道是不是不能这么直接用….<br>题解：需要借助辅助栈记录最小值，空间换取时间（是我太年轻，min(list) = O(n)</p>
-<h3 id="232-用栈实现队列"><a href="#232-用栈实现队列" class="headerlink" title="232.用栈实现队列"></a>232.用栈实现队列</h3><p>232真的有点意思，看完<a href="https://leetcode-cn.com/problems/implement-queue-using-stacks/solution/yong-zhan-shi-xian-dui-lie-by-leetcode/" target="_blank" rel="noopener">官方题解</a>之后觉得好巧妙啊，尤其是第二个方法，一个用来入队列，一个用来出队列。<br> 　　还是要注意一下，python没有类似java中的stack和Queue数据结构，并不意味着232和225就直接使用<code>list</code>和<code>deque</code>属性一步到位。</p>
+<h3 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155.最小栈"></a>155.最小栈</h3><p>不知道怎么说，用<code>list</code>的相关属性<code>append</code> <code>pop</code> <code>min</code> <code>list[-1]</code>似乎做的很容易，时间上也过得去，不知道是不是不能这么直接用….
+题解：需要借助辅助栈记录最小值，空间换取时间（是我太年轻，min(list) = O(n)</p>
+<h3 id="232-用栈实现队列"><a href="#232-用栈实现队列" class="headerlink" title="232.用栈实现队列"></a>232.用栈实现队列</h3><p>232真的有点意思，看完<a href="https://leetcode-cn.com/problems/implement-queue-using-stacks/solution/yong-zhan-shi-xian-dui-lie-by-leetcode/" target="_blank" rel="noopener">官方题解</a>之后觉得好巧妙啊，尤其是第二个方法，一个用来入队列，一个用来出队列。
+ 　　还是要注意一下，python没有类似java中的stack和Queue数据结构，并不意味着232和225就直接使用<code>list</code>和<code>deque</code>属性一步到位。</p>
 <ul>
 <li>deque 实现<br>注意，Python中用队列实现栈，只能使用<code>deque().append()</code>、<code>deque().pop()</code>或者<code>deque().appendleft()</code>、<code>deque().popleft()</code>，具体python实现移步github</li>
 </ul>
@@ -483,7 +485,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -358,8 +358,11 @@
       
         <h2 id="css权重"><a href="#css权重" class="headerlink" title="css权重"></a>css权重</h2><p>　　经常会遇到这样一种问题，为什么我写的css并没有达到我所期望的效果，很奇怪我注释掉这行代码对页面并没有什么影响–<br>　　也是自己对css规则并没有一个透彻的了解..<br>　　这里就来简单写一下关于css的权重，我觉得了解了权重的概念，能让你写css时更加得心应手，减少一些代码冗余和调试时间<br>　　权重也就是你这个元素选择器能PK掉其他选择器的几率，当然权重大的就能被浏览器在页面元素上应用（相同权重就以最后出现的为准 很容易理解 后面覆盖前面嘛），一个元素css规则可以从特定ID或类选择器得到，也可以继承而来，如果你从外部引入了一些框架，还有一些默认的css样式，当然也可以在html中直接定义style（一般这种写法是淘汰的，不适合多文档应用，冗余，修改麻烦等等…）所以权重只有在同一个元素有多个声明的时候有意义..<br><strong>关于权重级别（越往下权重越大）</strong></p>
 <ol>
-<li><strong>用户代理声明（比如浏览器的一些默认样式</strong><br> 不过经过<code>CSS Reset</code>和<code>Normalize.css</code> 一般我也没有很注重去修改浏览器的默认样式</li>
-<li><strong>开发者选项 F12</strong><br> 我们经常会通过开发者选项来调试看怎样的样式更加符合自己的要求<br><img src="https://www.smashingmagazine.com/wp-content/uploads/2010/10/overriding-styles.jpg" alt=""></li>
+<li><strong>用户代理声明（比如浏览器的一些默认样式</strong>
+ 不过经过<code>CSS Reset</code>和<code>Normalize.css</code> 一般我也没有很注重去修改浏览器的默认样式</li>
+<li><strong>开发者选项 F12</strong>
+ 我们经常会通过开发者选项来调试看怎样的样式更加符合自己的要求
+<img src="https://www.smashingmagazine.com/wp-content/uploads/2010/10/overriding-styles.jpg" alt=""></li>
 <li><strong>开发者声明</strong><ul>
 <li>选择器（注意嵌套定义 一般是标签越详细 ID或者class级数越多权重越大）</li>
 <li>一些插件和框架中的全局css</li>
@@ -367,7 +370,9 @@
 </ul>
 </li>
 </ol>
-<h2 id="important"><a href="#important" class="headerlink" title="!important"></a>!important</h2><p>前几天在代码的时候发现自己怎么写干不掉框架内部定义的样式 所以就google了一下怎样使用!important<br>当你在一个样式中声明！important的时候 会直接覆盖掉其他声明 也就是一种增加权重的方式<br>小范围使用还好  如果在你定义一个全局范围使用的类但是你只需要在这一个地方修改样式 这样修改就会跳出很多Bug<br>  <strong>所以怎样使用!important</strong></p>
+<h2 id="important"><a href="#important" class="headerlink" title="!important"></a>!important</h2><p>前几天在代码的时候发现自己怎么写干不掉框架内部定义的样式 所以就google了一下怎样使用!important
+当你在一个样式中声明！important的时候 会直接覆盖掉其他声明 也就是一种增加权重的方式<br>小范围使用还好  如果在你定义一个全局范围使用的类但是你只需要在这一个地方修改样式 这样修改就会跳出很多Bug
+  <strong>所以怎样使用!important</strong></p>
 <ol>
 <li>!important 一般写在样式最后 分号前面 来达到效果</li>
 <li>全局属性内部全部覆盖<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.example</span>&#123;  </span><br><span class="line">     <span class="attribute">border-radius</span>: <span class="number">1px</span> <span class="meta">!important</span>;                </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -383,7 +388,9 @@
 <li><strong>Always</strong> 要优化考虑使用样式规则的优先级来解决问题而不是 !important</li>
 </ul>
 <hr>
-<p><code>回来改改错误 嗯..下次见</code><br>2016/11/16<br>　　　　　amilyxy</p>
+<p><code>回来改改错误 嗯..下次见</code>
+2016/11/16
+　　　　　amilyxy</p>
 
       
     </div>
@@ -499,7 +506,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

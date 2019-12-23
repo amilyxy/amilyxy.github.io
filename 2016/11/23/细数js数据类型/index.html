@@ -90,15 +90,15 @@
 
 
 
-<meta name="description" content="when talking about javascript , always come arcoss with ECMAScript ,and I always want to ask what is the ECMAScript , and javascript the same as it ? or dialect?of course not ,the core of javascript">
+<meta name="description" content="when talking about javascript , always come arcoss with ECMAScript ,and I always want to ask what is the ECMAScript , and javascript the same as it ? or dialect? of course not ,the core of javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="细数js数据类型">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2016&#x2F;11&#x2F;23&#x2F;%E7%BB%86%E6%95%B0js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B&#x2F;index.html">
 <meta property="og:site_name" content="amilyxy&#39;Blog">
-<meta property="og:description" content="when talking about javascript , always come arcoss with ECMAScript ,and I always want to ask what is the ECMAScript , and javascript the same as it ? or dialect?of course not ,the core of javascript">
+<meta property="og:description" content="when talking about javascript , always come arcoss with ECMAScript ,and I always want to ask what is the ECMAScript , and javascript the same as it ? or dialect? of course not ,the core of javascript">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B&#x2F;1&#x2F;png">
-<meta property="og:updated_time" content="2019-11-18T12:24:06.000Z">
+<meta property="og:updated_time" content="2019-12-20T02:48:00.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B&#x2F;1&#x2F;png">
 
@@ -352,7 +352,8 @@
       
 
       
-        <p>　when talking about javascript , always come arcoss with ECMAScript ,and I always want to ask what is the ECMAScript , and javascript <del>the same as</del> it ? or dialect?<br>of course not ,the core of javascript based on it and javascript is not only for Client, but for Server like <a href="http://www.nodebeginner.org/index-zh-cn.html#status" target="_blank" rel="noopener">Nodejs</a> (its good I think) , I cant say more because I dont know too… so end.  </p>
+        <p>　when talking about javascript , always come arcoss with ECMAScript ,and I always want to ask what is the ECMAScript , and javascript <del>the same as</del> it ? or dialect?
+of course not ,the core of javascript based on it and javascript is not only for Client, but for Server like <a href="http://www.nodebeginner.org/index-zh-cn.html#status" target="_blank" rel="noopener">Nodejs</a> (its good I think) , I cant say more because I dont know too… so end.  </p>
 <p>ok..say person language<br>　实际上ECMAScript并没有定义具体操作web pages 的方法,而javascript做了很多拓展,比如DOM BOM 来操作浏览器,今天在看ES6新规范,看到了symbol,set,map所以跑去看了一下数据类型才发现自己了解 的也挺少的,初学者,我也不太习惯写文章,也罢,边写边学..  </p>
 <h3 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h3><p>js数据类型有<strong>原始数据类型</strong>(undefined null boolean number string symbol)<br>　之前在一个前端面试题目中看到js基本数据类型有哪些: undefined boolean number string object 感觉挺混乱，我的理解是对你定义的变量用 <code>typeof(variable)</code>返回的是前面五个之一,所以才被称为基本数据类型吧? 至于null哪去了 <code>typeof(null)-&gt;&#39;object&#39;</code>,据说是历史遗留问题 : <a href="http://www.2ality.com/2013/10/typeof-null.html" target="_blank" rel="noopener">typeof-null</a> 查的资料以后有兴趣可以看  /摊手<br>Ps: typeof只能返回前面五个基本数据类型和function(如果想要知道实例是什么类型的对象可以了解一下<code>instanceof</code>运算符)<br>还有<strong>引用数据类型</strong>(object) 可以看看ECMA-262文档  </p>
 <blockquote>
@@ -365,8 +366,11 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> (example); <span class="comment">//undefined 未声明变量</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">//这是一段省略的程序</span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;    <span class="comment">//控制台输入example()  输出 0</span></span><br><span class="line">   <span class="keyword">return</span> ;  <span class="comment">//控制台输入example()  输出 undefined</span></span><br><span class="line">  <span class="comment">//这是函数没有返回一个确定的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> example = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">example.prototype; <span class="comment">//新建对象没有prototype这个值所以undefined</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>null</strong><br>只有一个值null<br>undefined表示变量没有初始化而null则表示找不到对象是一个空对象指针,可以用来清空对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> ; <span class="comment">//true   undefined 是从null派生而来 </span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span> ; <span class="comment">//false</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>boolean</strong><br>布尔型数据有两个值true or false 有两种转换方式<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Boolean(value) ;//显式转换 返回一个bool值</span><br><span class="line"><span class="built_in">var</span> <span class="built_in">example</span> ; //隐式转换  很常见</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">example</span>) &#123;XXX&#125;  //<span class="built_in">example</span> can be <span class="string">"null 0 false "</span><span class="string">"(empty string) undefined NaN"</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>null</strong>
+只有一个值null 
+undefined表示变量没有初始化而null则表示找不到对象是一个空对象指针,可以用来清空对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> ; <span class="comment">//true   undefined 是从null派生而来 </span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span> ; <span class="comment">//false</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>boolean</strong>
+布尔型数据有两个值true or false 有两种转换方式<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Boolean(value) ;//显式转换 返回一个bool值</span><br><span class="line"><span class="built_in">var</span> <span class="built_in">example</span> ; //隐式转换  很常见</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">example</span>) &#123;XXX&#125;  //<span class="built_in">example</span> can be <span class="string">"null 0 false "</span><span class="string">"(empty string) undefined NaN"</span></span><br></pre></td></tr></table></figure></li>
 <li><em>ToBoolean转换表*</em></li>
 </ul>
 <table>
@@ -402,7 +406,9 @@
 </tr>
 </tbody></table>
 <ul>
-<li><strong>number</strong><br>可以表示整数和浮点数 有两个比较特别的值 <code>Infinity</code>和<code>-Infinity</code>  (无穷大)<br>Number()函数也可以转换数字 如果返回值是一个非数值则会返回NaN以避免产生异常错误 parseInt()/parseFloat()可以接受参数,进行进制转换 缺省值是10<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">0.1</span>+<span class="number">0.2</span>) == <span class="number">0.3</span><span class="function"> -&gt;</span> <span class="literal">false</span></span><br><span class="line">NaN == NaN<span class="function"> -&gt;</span> <span class="literal">false</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"0xff"</span>)</span> -&gt;</span> <span class="number">255</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"123.1bl.2"</span>)</span> -&gt;</span> <span class="number">123</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"123.1bl.2"</span>,<span class="number">2</span>)</span>  -&gt;</span> <span class="number">1</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"123.1bl.2"</span>,<span class="number">8</span>)</span> -&gt;</span> <span class="number">83</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"0001111"</span>)</span> -&gt;</span> <span class="number">1111</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>number</strong>
+可以表示整数和浮点数 有两个比较特别的值 <code>Infinity</code>和<code>-Infinity</code>  (无穷大)
+Number()函数也可以转换数字 如果返回值是一个非数值则会返回NaN以避免产生异常错误 parseInt()/parseFloat()可以接受参数,进行进制转换 缺省值是10<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">0.1</span>+<span class="number">0.2</span>) == <span class="number">0.3</span><span class="function"> -&gt;</span> <span class="literal">false</span></span><br><span class="line">NaN == NaN<span class="function"> -&gt;</span> <span class="literal">false</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"0xff"</span>)</span> -&gt;</span> <span class="number">255</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"123.1bl.2"</span>)</span> -&gt;</span> <span class="number">123</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"123.1bl.2"</span>,<span class="number">2</span>)</span>  -&gt;</span> <span class="number">1</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"123.1bl.2"</span>,<span class="number">8</span>)</span> -&gt;</span> <span class="number">83</span></span><br><span class="line">parseInt<span class="function"><span class="params">(<span class="string">"0001111"</span>)</span> -&gt;</span> <span class="number">1111</span></span><br></pre></td></tr></table></figure></li>
 <li><em>toNumber转换表*</em></li>
 </ul>
 <table>
@@ -438,7 +444,8 @@
 </tr>
 </tbody></table>
 <ul>
-<li><strong>string</strong><br>不可描述 总之 很丰富 ]属性以及方法也有很多 需要什么查什么 @.@ </li>
+<li><strong>string</strong>
+不可描述 总之 很丰富 ]属性以及方法也有很多 需要什么查什么 @.@ </li>
 <li><em>toString转换表*</em></li>
 </ul>
 <table>
@@ -474,11 +481,24 @@
 </tr>
 </tbody></table>
 <ul>
-<li><strong>symbol</strong><br>这个是ES6新规范 要不是他.. 我就不会想写这篇文章了..<br>可是我还是看不懂.. 囤货 -&gt; <a href="http://bubkoo.com/2015/07/24/es6-in-depth-symbols/" target="_blank" rel="noopener">深入解析 ES6：Symbol</a></li>
+<li><strong>symbol</strong>
+这个是ES6新规范 要不是他.. 我就不会想写这篇文章了.. 
+可是我还是看不懂.. 囤货 -&gt; <a href="http://bubkoo.com/2015/07/24/es6-in-depth-symbols/" target="_blank" rel="noopener">深入解析 ES6：Symbol</a></li>
 </ul>
-<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><p>不像C有结构体C++有类,在javascript里面等同于”对象”这个名词,其他引用类型都从Object引用类型继承而来.<br>首先构造对象的方法:<br> <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var father = &#123;            <span class="comment">//直接初始化方法</span></span><br><span class="line">      name: <span class="string">"Lilei"</span>,</span><br><span class="line">      age: <span class="number">36</span>,</span><br><span class="line">&#125;</span><br><span class="line">father.work = <span class="string">"doctor"</span>;   <span class="comment">//为对象添加属性 删除可以赋undefined</span></span><br><span class="line">father.worktime = <span class="keyword">function</span><span class="literal">()</span> &#123; alert(<span class="string">"1,2,3,4,5"</span>);&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="constructor">People(<span class="params">name</span>, <span class="params">age</span>, <span class="params">person</span>)</span> &#123;    <span class="comment">//构造函数法 参数可以是另一个对象</span></span><br><span class="line">      this.name = name;</span><br><span class="line">      this.age = age;</span><br><span class="line">      this.father = person;     <span class="comment">//这里就不写闭包了..并不打算现在接触....</span></span><br><span class="line">&#125;</span><br><span class="line">var person1 = <span class="keyword">new</span> <span class="constructor">People(<span class="string">"Hanmeimei"</span>, 18,<span class="params">father</span>)</span>    <span class="comment">//new运算符在后面</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">People</span>.</span></span>prototype.work = <span class="string">"student"</span>;   <span class="comment">//通过原型添加属性或方法</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">People</span>.</span></span>work; <span class="comment">//注意输出 undefined</span></span><br></pre></td></tr></table></figure><br>贴张图解释一下<br><img src="/images/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1/png" alt=""><br><strong>new运算符</strong><br>　简而言之: new运算符的作用就是构造一个对象实例，构造函数可以是像上面People一样自定义(这时候将创建一个隐式引用链接到函数的prototype用于初始化实例对象的<em>proto</em>)，也可以是js自带的构造函数比如Array()等，注意只有构造函数具有prototype而实例没有只有_proto_，new出来的对象上下文的this会指向这个对象实例。<br><strong>原型和原型链</strong>　<br>　在javascript中原型实例指向一个他的原型的的链接，然后这个原型对象又有自己的原型，到null 为止，想象出来就是一条链子..<br>感觉和事件冒泡差不多，当我在自己的内部找不到某个属性或者方法的时候就会找自己原型函数的属性和方法…</p>
+<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><p>不像C有结构体C++有类,在javascript里面等同于”对象”这个名词,其他引用类型都从Object引用类型继承而来.
+首先构造对象的方法:
+ <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var father = &#123;            <span class="comment">//直接初始化方法</span></span><br><span class="line">      name: <span class="string">"Lilei"</span>,</span><br><span class="line">      age: <span class="number">36</span>,</span><br><span class="line">&#125;</span><br><span class="line">father.work = <span class="string">"doctor"</span>;   <span class="comment">//为对象添加属性 删除可以赋undefined</span></span><br><span class="line">father.worktime = <span class="keyword">function</span><span class="literal">()</span> &#123; alert(<span class="string">"1,2,3,4,5"</span>);&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="constructor">People(<span class="params">name</span>, <span class="params">age</span>, <span class="params">person</span>)</span> &#123;    <span class="comment">//构造函数法 参数可以是另一个对象</span></span><br><span class="line">      this.name = name;</span><br><span class="line">      this.age = age;</span><br><span class="line">      this.father = person;     <span class="comment">//这里就不写闭包了..并不打算现在接触....</span></span><br><span class="line">&#125;</span><br><span class="line">var person1 = <span class="keyword">new</span> <span class="constructor">People(<span class="string">"Hanmeimei"</span>, 18,<span class="params">father</span>)</span>    <span class="comment">//new运算符在后面</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">People</span>.</span></span>prototype.work = <span class="string">"student"</span>;   <span class="comment">//通过原型添加属性或方法</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">People</span>.</span></span>work; <span class="comment">//注意输出 undefined</span></span><br></pre></td></tr></table></figure>
+贴张图解释一下
+<img src="/images/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1/png" alt="">
+<strong>new运算符</strong>
+　简而言之: new运算符的作用就是构造一个对象实例，构造函数可以是像上面People一样自定义(这时候将创建一个隐式引用链接到函数的prototype用于初始化实例对象的<em>proto</em>)，也可以是js自带的构造函数比如Array()等，注意只有构造函数具有prototype而实例没有只有_proto_，new出来的对象上下文的this会指向这个对象实例。
+<strong>原型和原型链</strong>　
+　在javascript中原型实例指向一个他的原型的的链接，然后这个原型对象又有自己的原型，到null 为止，想象出来就是一条链子..
+感觉和事件冒泡差不多，当我在自己的内部找不到某个属性或者方法的时候就会找自己原型函数的属性和方法…</p>
 <hr>
-<p><code>写的好累 我要去学rails了，下次见   /微笑</code><br>2016/11/23<br>　　　　amilyxy</p>
+<p><code>写的好累 我要去学rails了，下次见   /微笑</code>
+2016/11/23
+　　　　amilyxy</p>
 
       
     </div>
@@ -598,7 +618,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

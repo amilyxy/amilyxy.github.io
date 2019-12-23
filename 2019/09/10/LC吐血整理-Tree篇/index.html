@@ -98,7 +98,7 @@
 <meta property="og:description" content="人生苦短 我学python">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;tree_1.png">
-<meta property="og:updated_time" content="2019-11-20T11:35:25.000Z">
+<meta property="og:updated_time" content="2019-12-20T02:47:59.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;tree_1.png">
 
@@ -358,13 +358,20 @@
       
         <hr>
 <p>所有题解方法请移步 <a href="https://github.com/amilyxy/Leecode_summary" target="_blank" rel="noopener">github-Leecode_summary</a>  </p>
-<h3 id="144-二叉树的前序遍历"><a href="#144-二叉树的前序遍历" class="headerlink" title="144.二叉树的前序遍历"></a>144.二叉树的前序遍历</h3><p>二叉树是每个结点最多有两个子树的树结构,是一种非线性结构<br>刚开始写了一个小时自以为的前序遍历，好不容易能执行代码，结果提交不通过（图源水印）<br><img src="/images/leecode/tree_1.png" alt="记清楚"><br>今日<strong>Tips: 二叉树的遍历</strong><br>　　树的遍历实质上是将二叉树的各个结点转换成为一个线性序列来表示，按照根节点访问的顺序不同，分为以下三种：前序遍历，中序遍历，后序遍历。<br><strong>前序遍历 preOrder</strong>：<br>　　对树中的任意节点来说，访问顺序：本节点-&gt;左子树-&gt;右子树。<br>　　<code>递推公式: preOrder(r) = print r-&gt;preOrder(r-&gt;left)-&gt;preOrder(r-&gt;right)</code><br><strong>中序遍历 inOrder</strong>：<br>　　对于树中的任意节点来说，访问顺序：左子树-&gt;本节点-&gt;右子树。<br>　　<code>递推公式: inOrder(r) = inOrder(r-&gt;left)-&gt;print r-&gt;inOrder(r-&gt;right)</code><br><strong>后序遍历 postOrder</strong>：<br>　　对于树中的任意节点来说，访问顺序：左子树-&gt;右子树-&gt;本节点。<br>　　<code>递推公式: postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r</code>  </p>
+<h3 id="144-二叉树的前序遍历"><a href="#144-二叉树的前序遍历" class="headerlink" title="144.二叉树的前序遍历"></a>144.二叉树的前序遍历</h3><p>二叉树是每个结点最多有两个子树的树结构,是一种非线性结构
+刚开始写了一个小时自以为的前序遍历，好不容易能执行代码，结果提交不通过（图源水印）
+<img src="/images/leecode/tree_1.png" alt="记清楚"><br>今日<strong>Tips: 二叉树的遍历</strong><br>　　树的遍历实质上是将二叉树的各个结点转换成为一个线性序列来表示，按照根节点访问的顺序不同，分为以下三种：前序遍历，中序遍历，后序遍历。<br><strong>前序遍历 preOrder</strong>：  
+　　对树中的任意节点来说，访问顺序：本节点-&gt;左子树-&gt;右子树。<br>　　<code>递推公式: preOrder(r) = print r-&gt;preOrder(r-&gt;left)-&gt;preOrder(r-&gt;right)</code><br><strong>中序遍历 inOrder</strong>：  
+　　对于树中的任意节点来说，访问顺序：左子树-&gt;本节点-&gt;右子树。<br>　　<code>递推公式: inOrder(r) = inOrder(r-&gt;left)-&gt;print r-&gt;inOrder(r-&gt;right)</code><br><strong>后序遍历 postOrder</strong>：  
+　　对于树中的任意节点来说，访问顺序：左子树-&gt;右子树-&gt;本节点。<br>　　<code>递推公式: postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r</code>  </p>
 <p><a href="https://zhuanlan.zhihu.com/p/65663234" target="_blank" rel="noopener">一篇文章学会二叉树和二叉查找树</a>  </p>
 <h3 id="94-amp-145-中序遍历-amp-后序遍历-amp-102-树的层次遍历"><a href="#94-amp-145-中序遍历-amp-后序遍历-amp-102-树的层次遍历" class="headerlink" title="94&amp;145-中序遍历&amp;后序遍历 &amp; 102.树的层次遍历"></a>94&amp;145-中序遍历&amp;后序遍历 &amp; 102.树的层次遍历</h3><p>之所以放在一起写呢，是因为二叉树的前中后序遍历“换汤不换药”</p>
-<h3 id="100-相同的树"><a href="#100-相同的树" class="headerlink" title="100. 相同的树"></a>100. 相同的树</h3><p>最初的思路：如果两个树相同，那么他们的先序遍历等各种遍历结果应该也是一样的。<br>看完答案：我还是写的太复杂了哎…<br>题解收获：<br>　　二叉树算法设计思路：明确当前节点的操作，其他的交给递归框架  </p>
+<h3 id="100-相同的树"><a href="#100-相同的树" class="headerlink" title="100. 相同的树"></a>100. 相同的树</h3><p>最初的思路：如果两个树相同，那么他们的先序遍历等各种遍历结果应该也是一样的。<br>看完答案：我还是写的太复杂了哎…<br>题解收获：
+　　二叉树算法设计思路：明确当前节点的操作，其他的交给递归框架  </p>
 <h3 id="101-对称二叉树"><a href="#101-对称二叉树" class="headerlink" title="101.对称二叉树"></a>101.对称二叉树</h3><p>感觉我没想到题目该想的点上…算投机取巧吗？？<br><strong>思路：</strong>这个题目跟100题思路类似，都是判断当前节点/当前左子树和右子树是否满足某种关系，然后进行递归。</p>
 <hr>
-<p>2019.9.25<br>2019.11.17  每天除了打比赛就做题，最近每天要多做一个题了，还要抽时间刷面经，希望自己不要降低做题的质量</p>
+<p>2019.9.25 
+2019.11.17  每天除了打比赛就做题，最近每天要多做一个题了，还要抽时间刷面经，希望自己不要降低做题的质量</p>
 
       
     </div>
@@ -484,7 +491,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

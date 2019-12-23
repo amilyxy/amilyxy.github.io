@@ -355,18 +355,25 @@
 
       
         <p>所有题解方法请移步 <a href="https://github.com/amilyxy/Leecode_summary" target="_blank" rel="noopener">github-Leecode_summary</a>   </p>
-<h3 id="384-打乱数组-amp-398-随机数索引"><a href="#384-打乱数组-amp-398-随机数索引" class="headerlink" title="384.打乱数组 &amp; 398.随机数索引"></a>384.打乱数组 &amp; 398.随机数索引</h3><p><strong>set() 看似无序却有序，看似有序却无序</strong><br>写在前面：<br>　　之前做127题单词接龙时被set()时间复杂度折磨了很久，所以看到无序就想，<del>这不是set()就好了</del> ( 当然没这么easy，不过set()无序问题水真深….，所以题目应该是手动实现<code>random.shuffle</code>吧。<br>看完题解：<br>　　哦，原来还有洗牌算法这么一说 == </p>
-<p><strong>盘一波洗牌算法：</strong><br>　　我又来当搬运工了： <a href="https://blog.csdn.net/qq_26399665/article/details/79831490" target="_blank" rel="noopener">三种洗牌算法shuffle</a>，介绍了384的洗牌解法和398的蓄水池解法。<a href="https://leetcode-cn.com/problems/shuffle-an-array/solution/xi-pai-suan-fa-shen-du-xiang-jie-by-labuladong/" target="_blank" rel="noopener">这个题解</a>也说的蛮不错，而且用蒙特卡洛方法验证Fisher-Yates的有效性。 </p>
+<h3 id="384-打乱数组-amp-398-随机数索引"><a href="#384-打乱数组-amp-398-随机数索引" class="headerlink" title="384.打乱数组 &amp; 398.随机数索引"></a>384.打乱数组 &amp; 398.随机数索引</h3><p><strong>set() 看似无序却有序，看似有序却无序</strong><br>写在前面：
+　　之前做127题单词接龙时被set()时间复杂度折磨了很久，所以看到无序就想，<del>这不是set()就好了</del> ( 当然没这么easy，不过set()无序问题水真深….，所以题目应该是手动实现<code>random.shuffle</code>吧。
+看完题解：
+　　哦，原来还有洗牌算法这么一说 == </p>
+<p><strong>盘一波洗牌算法：</strong>
+　　我又来当搬运工了： <a href="https://blog.csdn.net/qq_26399665/article/details/79831490" target="_blank" rel="noopener">三种洗牌算法shuffle</a>，介绍了384的洗牌解法和398的蓄水池解法。<a href="https://leetcode-cn.com/problems/shuffle-an-array/solution/xi-pai-suan-fa-shen-du-xiang-jie-by-labuladong/" target="_blank" rel="noopener">这个题解</a>也说的蛮不错，而且用蒙特卡洛方法验证Fisher-Yates的有效性。 </p>
 <ul>
 <li>Python版本 Knuth-Durstenfeld Shuffle 写法：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shuffle</span><span class="params">(List)</span>:</span></span><br><span class="line">    n = len(List)</span><br><span class="line">    <span class="comment"># 方法一： (n-1)/n*(n-2)/(n-1)···*1/(n-i+1) = 1/n</span></span><br><span class="line">    <span class="comment"># 从前往后遍历，适合List动态变化或者List长度未知的情况</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n): / range(n<span class="number">-1</span>)  <span class="comment"># i = n-1实际上只有一个坑位</span></span><br><span class="line">        swap = random.randrange(i, n)</span><br><span class="line">        List[swap]. List[i] = list[i], List[swap]  <span class="comment"># 这里是修改的原数组List 有需要的话先copy</span></span><br><span class="line">    <span class="comment"># 方法二：只是方向的区别 </span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>): / range(n<span class="number">-1</span>, <span class="number">0</span>, <span class="number">-1</span>)</span><br><span class="line">        swap = random.randrange(<span class="number">0</span>, i)</span><br><span class="line">        List[swap]. List[i] = list[i], List[swap]</span><br></pre></td></tr></table></figure></li>
-<li>Python版本 蓄水池抽样算法：<br>基本要求: 随机从容量为N的数组中抽取k个元素，要求等概率抽样也就是k/N<br>实例面试题：如何从二进制文件中随机取整数？(要求等概率)  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一： 上面洗牌算法链接中的一个,适合List动态变化</span></span><br><span class="line"><span class="comment"># 选中概率：</span></span><br><span class="line"><span class="comment"># 1. 后面k-n出现在前k个的概率：k/(k+1)*(k+1)/k+2*···*(n-1)/n</span></span><br><span class="line"><span class="comment"># 2. 前面0-k出现在k个的概率：k/n</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shufflek</span><span class="params">(List, l)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k, len(List)):</span><br><span class="line">        swap = random.randrange(<span class="number">0</span>, i)</span><br><span class="line">        <span class="keyword">if</span> swap &lt; k:</span><br><span class="line">            List[swap]. List[i] = list[i], List[swap]</span><br></pre></td></tr></table></figure>
+<li>Python版本 蓄水池抽样算法：
+基本要求: 随机从容量为N的数组中抽取k个元素，要求等概率抽样也就是k/N
+实例面试题：如何从二进制文件中随机取整数？(要求等概率)  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一： 上面洗牌算法链接中的一个,适合List动态变化</span></span><br><span class="line"><span class="comment"># 选中概率：</span></span><br><span class="line"><span class="comment"># 1. 后面k-n出现在前k个的概率：k/(k+1)*(k+1)/k+2*···*(n-1)/n</span></span><br><span class="line"><span class="comment"># 2. 前面0-k出现在k个的概率：k/n</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shufflek</span><span class="params">(List, l)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k, len(List)):</span><br><span class="line">        swap = random.randrange(<span class="number">0</span>, i)</span><br><span class="line">        <span class="keyword">if</span> swap &lt; k:</span><br><span class="line">            List[swap]. List[i] = list[i], List[swap]</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h3 id="382-链表随机节点-amp-380-常数时间插入、删除和获取"><a href="#382-链表随机节点-amp-380-常数时间插入、删除和获取" class="headerlink" title="382.链表随机节点 &amp; 380.常数时间插入、删除和获取"></a>382.链表随机节点 &amp; 380.常数时间插入、删除和获取</h3><p>没啥好说的呀，写就完事了，有几点疑问：</p>
 <ol>
 <li>382我写的不知道是不是常数级空间复杂度  </li>
-<li>380为什么要用hashmap(dict)，<code>i in set()</code> 本身就是一个O(1)问题，有点搞不懂<br>希望有人看到来解答一波吧~</li>
+<li>380为什么要用hashmap(dict)，<code>i in set()</code> 本身就是一个O(1)问题，有点搞不懂
+希望有人看到来解答一波吧~</li>
 </ol>
 
       
@@ -487,7 +494,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

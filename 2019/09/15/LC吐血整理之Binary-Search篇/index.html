@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="人生苦短 我学python">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-20T12:05:50.000Z">
+<meta property="og:updated_time" content="2019-12-23T14:53:20.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -361,9 +361,14 @@
 <li>找思路 （二分法）</li>
 <li>实现代码 （迭代or递归） （将n转化为list or 记录left right索引）  </li>
 </ul>
-<p>今日份 <strong>small Tips</strong> :<br>　　<code>mid = left+(right-left)/2</code>  （虽然py不需要考虑，但在C++，java中可以防止数据溢出）<br><strong>扩展版本：</strong><br>　　寻找某个值时，返回其索引<br>　　如果要求不能用内置函数的话，就直接套用这个题目，进行二分法搜索</p>
+<p>今日份 <strong>small Tips</strong> :<br>　　<code>mid = left+(right-left)/2</code>  （虽然py不需要考虑，但在C++，java中可以防止数据溢出）<br><strong>扩展版本：</strong><br>　　寻找某个值时，返回其索引
+　　如果要求不能用内置函数的话，就直接套用这个题目，进行二分法搜索</p>
 <h3 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a>35. 搜索插入位置</h3><p>得益于278题，思路还是比较清晰的：先设定左侧下标<code>left</code>、右侧下标<code>right</code>，根据<code>left</code>和<code>right</code>计算中间下标<code>mid</code>，每次根据<code>nums[mid]</code>和<code>target</code>大小更新<code>left</code>和<code>right</code>，题解中有句话我非常赞同，写二分法时应当思考：<br>　　<strong>“循环结束条件中 left 和 right 的关系，更新 left 和 right 位置时要不要加 1 减 1”</strong>  </p>
-<h3 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33.搜索旋转排序数组"></a>33.搜索旋转排序数组</h3><p>35题中的二分法搜索适用于有序数组，本题中是旋转数组，因此需要结合首尾判断哪一部分为有序数组，以确定保留哪一部分，还是那句话: （多多思考一下<br>　　<strong>“循环结束条件中 left 和 right 的关系，更新 left 和 right 位置时要不要加 1 减 1”</strong>  </p>
+<h3 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33.搜索旋转排序数组"></a>33.搜索旋转排序数组</h3><p>35题中的二分法搜索适用于有序数组，本题中是旋转数组，因此需要结合首尾判断哪一部分为有序数组，以确定保留哪一部分，还是那句话: （多多思考一下
+　　<strong>“循环结束条件中 left 和 right 的关系，更新 left 和 right 位置时要不要加 1 减 1”</strong>  </p>
+<h3 id="81-搜索旋转排序数组II"><a href="#81-搜索旋转排序数组II" class="headerlink" title="81.搜索旋转排序数组II"></a>81.搜索旋转排序数组II</h3><p>本来可以和35相同的思路做，但是这个题又强调了数组中存在重复元素 ，哎，我看答案了…<br>看了一遍还是<a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/solution/er-fen-by-powcai/" target="_blank" rel="noopener">这个题解写的比较好</a>，很好的结合了33题。  </p>
+<h3 id="153-寻找旋转排序数组中的最小值"><a href="#153-寻找旋转排序数组中的最小值" class="headerlink" title="153.寻找旋转排序数组中的最小值"></a>153.寻找旋转排序数组中的最小值</h3><p>其实也是二分法的一种拓展，虽然可以直接<code>min(nums)</code>，但既然题目要求了时间复杂度为O(logn)那就不要走内置函数拉~     
+我感觉我是一边跟报错一遍试出来的答案…然后看到有答案用拐点去做的，最坏情况下，当<code>nums=[1,2,3,...,n,0]</code>时，时间复杂度为O(n)。  </p>
 
       
     </div>
@@ -483,7 +488,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -539,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#278-第一个错误的版本"><span class="nav-number">1.</span> <span class="nav-text">278 第一个错误的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-搜索插入位置"><span class="nav-number">2.</span> <span class="nav-text">35. 搜索插入位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-搜索旋转排序数组"><span class="nav-number">3.</span> <span class="nav-text">33.搜索旋转排序数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#278-第一个错误的版本"><span class="nav-number">1.</span> <span class="nav-text">278 第一个错误的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-搜索插入位置"><span class="nav-number">2.</span> <span class="nav-text">35. 搜索插入位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-搜索旋转排序数组"><span class="nav-number">3.</span> <span class="nav-text">33.搜索旋转排序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#81-搜索旋转排序数组II"><span class="nav-number">4.</span> <span class="nav-text">81.搜索旋转排序数组II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#153-寻找旋转排序数组中的最小值"><span class="nav-number">5.</span> <span class="nav-text">153.寻找旋转排序数组中的最小值</span></a></li></ol></div>
             
 
           </div>
