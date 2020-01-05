@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="人生苦短 我学python">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-19T09:53:15.497Z">
+<meta property="og:updated_time" content="2019-11-21T05:16:05.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -356,20 +356,27 @@
       
         <hr>
 <p>所有题解方法请移步 <a href="https://github.com/amilyxy/Leecode_summary" target="_blank" rel="noopener">github-Leecode_summary</a>  </p>
-<h3 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200. 岛屿数量"></a>200. 岛屿数量</h3><p> 三个字：不会做，没有什么好的思路，虽然理解了题目的意思，但是真的没法用程序表达出来，也是一种绝望啊~<br>话不多说，直接进入题解，讲一讲学到的知识吧:　<a href="http://www.pianshen.com/article/172962944/" target="_blank" rel="noopener">参考资料：Flood Fill</a><br><strong>今日份重要的Tips:</strong><br>以下针对的都是无向图，且图已经用邻接矩阵表示。</p>
+<h3 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200. 岛屿数量"></a>200. 岛屿数量</h3><p> 三个字：不会做，没有什么好的思路，虽然理解了题目的意思，但是真的没法用程序表达出来，也是一种绝望啊~  
+话不多说，直接进入题解，讲一讲学到的知识吧:　<a href="http://www.pianshen.com/article/172962944/" target="_blank" rel="noopener">参考资料：Flood Fill</a>
+<strong>今日份重要的Tips:</strong><br>以下针对的都是无向图，且图已经用邻接矩阵表示。</p>
 <h4 id="DFS"><a href="#DFS" class="headerlink" title="DFS:"></a>DFS:</h4><ul>
 <li><strong>概念理解</strong>  <blockquote>
-<p>DFS(Deep First Search) 深度优先搜索：是一种用于遍历或者搜索树和图的算法，属于盲目搜索。@wiki<br>　　沿着树的深度遍历树的节点，尽可能深的搜索树的分支，如果没有节点可以搜索，将回溯到发现该节点的“源节点”，直到访问完从源节点可达到的所有节点。(递归下去，回溯上来)<br>　　此刻若发现还有未访问的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。</p>
+<p>DFS(Deep First Search) 深度优先搜索：是一种用于遍历或者搜索树和图的算法，属于盲目搜索。@wiki
+　　沿着树的深度遍历树的节点，尽可能深的搜索树的分支，如果没有节点可以搜索，将回溯到发现该节点的“源节点”，直到访问完从源节点可达到的所有节点。(递归下去，回溯上来)
+　　此刻若发现还有未访问的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。</p>
 </blockquote>
 </li>
-<li><strong>实现方法</strong><br>类似于树的先序遍历<br>使用堆栈结构-先进后出<br>实例：寻找迷宫出口（不撞南墙不回头）,目标明确，就是为了找出口</li>
+<li><strong>实现方法</strong><br>类似于树的先序遍历
+使用堆栈结构-先进后出
+实例：寻找迷宫出口（不撞南墙不回头）,目标明确，就是为了找出口</li>
 <li><strong>算法思路</strong> <code>python</code><br>递归实现 ⬇<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">假设graph大小为m*n </span></span><br><span class="line"><span class="string">graph[i][j]: 情况一：有值   比如 1:可访问单元  0：该单元不可访问 </span></span><br><span class="line"><span class="string">             情况二：无值（所有单元均可访问，也就是迷宫没有障碍物）</span></span><br><span class="line"><span class="string">marked[m][n]: 用于标记graph上哪些点走过</span></span><br><span class="line"><span class="string">directions: 用于实现左上右下的移动</span></span><br><span class="line"><span class="string">state(graph[i][j]) = S：graph[i][j]满足某种状态/条件S</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">directions = [(<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>)]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(graph)</span>:</span></span><br><span class="line">    marked = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)] <span class="keyword">for</span> ) <span class="keyword">in</span> range(n)]     </span><br><span class="line">    <span class="comment"># 图不连通需要遍历整张图</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            //相应dfs条件//</span><br><span class="line">            dfs(graph, marked, i, j)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(graph, marked, i, j)</span>:</span></span><br><span class="line">    marked[new_i][new_j] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> state(graph[i][j]) = S：</span><br><span class="line">     // 相应处理</span><br><span class="line">     <span class="comment"># 接下来进行DFS搜索</span></span><br><span class="line">    <span class="keyword">for</span> direc <span class="keyword">in</span> directions:</span><br><span class="line">        new_i = i+direc[<span class="number">0</span>]</span><br><span class="line">        new_j = j+direc[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span>&lt;=new_i&lt;m) <span class="keyword">and</span> (<span class="number">0</span>&lt;=new_j&lt;n) <span class="keyword">and</span> <span class="keyword">not</span> marked[new_i][new_j] <span class="keyword">and</span> graph[new_i][new_j] == <span class="number">1</span>：</span><br><span class="line">            dfs(graph, marked, new_i, new_j)</span><br><span class="line">            <span class="comment"># marked[new_i][new_j] = 1 是否需要这一步视情况而定</span></span><br></pre></td></tr></table></figure>
 实际上递归非常消耗内存，如果graph过大，容易发生溢出，DFS也可用stack实现<code>queue.append()</code> <code>queue.pop()</code>先进后出，具体可参考BFS  </li>
 </ul>
 <h4 id="BFS"><a href="#BFS" class="headerlink" title="BFS:"></a>BFS:</h4><ul>
 <li><p><strong>概念理解</strong></p>
 <blockquote>
-<p>BFS(Breath First Search) 广度优先搜索：搜索树和图的算法，也是一种盲目搜素。@wiki<br>　　BFS从树的宽度遍历树的节点   </p>
+<p>BFS(Breath First Search) 广度优先搜索：搜索树和图的算法，也是一种盲目搜素。@wiki
+　　BFS从树的宽度遍历树的节点   </p>
 </blockquote>
 </li>
 <li><p><strong>实现方法</strong><br>类似树的层次遍历<br>使用队列结构（先进先出）<br>实例：寻找迷宫出口的最短路径 ，大范围搜索</p>
@@ -379,7 +386,8 @@
 <h4 id="IDDFS"><a href="#IDDFS" class="headerlink" title="IDDFS:"></a>IDDFS:</h4></li>
 <li><p><strong>概念理解</strong></p>
 <blockquote>
-<p>IDDFS(iterative deepening depth-first search (IDS or IDDFS)) 是对状态空间的搜索策略，它重复地运行一个有深度限制的DFS，每次运行结束后，增加深度并迭代，直到找到目标状态。@wiki<br>　　IDDFS 与BFS有同样的时间复杂度，而空间复杂度远优。（这一点也可以从第130题体现出来）<br>　　IDDFS 第一次访问节点的累积顺序是广度优先的。  </p>
+<p>IDDFS(iterative deepening depth-first search (IDS or IDDFS)) 是对状态空间的搜索策略，它重复地运行一个有深度限制的DFS，每次运行结束后，增加深度并迭代，直到找到目标状态。@wiki
+　　IDDFS 与BFS有同样的时间复杂度，而空间复杂度远优。（这一点也可以从第130题体现出来）<br>　　IDDFS 第一次访问节点的累积顺序是广度优先的。  </p>
 </blockquote>
 </li>
 <li><p><strong>实现方法</strong><br>迭代过程中记录深度<br>贴几个帖子看看吧，时间有限，我也不深究了<br><a href="https://www.cycode.club/difang/271/" target="_blank" rel="noopener">迭代深化深度优先搜索（IDDFS）</a>  </p>
@@ -389,20 +397,26 @@
 <h3 id="130-被围绕的区域"><a href="#130-被围绕的区域" class="headerlink" title="130.被围绕的区域"></a>130.被围绕的区域</h3><p>不得不说，总结一下DFS和BFS还是挺有用的，今天<del>做题很迅速</del> (假的，今天是的是队列去存储 ‘X’2‘O’ 的单元格。<br><strong>今日份的small Tips:</strong>  关于deque基本操作，有机会再补充  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deque 为双向队列</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">queue = deque()</span><br><span class="line"><span class="comment"># 在双向队列的右边/左边添加</span></span><br><span class="line">queue.append() / queue.appendleft()</span><br><span class="line"><span class="comment"># 删除所有queue元素</span></span><br><span class="line">queue.clear()</span><br><span class="line"><span class="comment"># 在双向队列的右边/左边删除并返回一个元素</span></span><br><span class="line">queue.pop() / queue.popleft()</span><br></pre></td></tr></table></figure>
 
-<h3 id="127-单词接龙"><a href="#127-单词接龙" class="headerlink" title="127.单词接龙"></a>127.单词接龙</h3><h4 id="踩坑记录："><a href="#踩坑记录：" class="headerlink" title="踩坑记录："></a>踩坑记录：</h4><p>是这样的，刚开始看到关键词-“找 <strong>最短</strong> 转换序列”，瞬间想到用BFS求最短路径去做，但在做的过程中发现用队列BFS方法似乎没办法轻松的求深度，也就是这个最短路径到底是多短，后来尝试了记录每一层的进队列出队列数去计算深度，写是写出来了，无奈运行第30个测试用例的时候超出时长限制，我太难了…<br>　　踩了几个坑，对BFS有更深的了解：</p>
+<h3 id="127-单词接龙"><a href="#127-单词接龙" class="headerlink" title="127.单词接龙"></a>127.单词接龙</h3><h4 id="踩坑记录："><a href="#踩坑记录：" class="headerlink" title="踩坑记录："></a>踩坑记录：</h4><p>是这样的，刚开始看到关键词-“找 <strong>最短</strong> 转换序列”，瞬间想到用BFS求最短路径去做，但在做的过程中发现用队列BFS方法似乎没办法轻松的求深度，也就是这个最短路径到底是多短，后来尝试了记录每一层的进队列出队列数去计算深度，写是写出来了，无奈运行第30个测试用例的时候超出时长限制，我太难了…
+　　踩了几个坑，对BFS有更深的了解：</p>
 <h5 id="1-循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）"><a href="#1-循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）" class="headerlink" title="1. 循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）"></a>1. 循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> a:           /   <span class="keyword">for</span> i <span class="keyword">in</span> a[::<span class="number">-1</span>]:</span><br><span class="line"><span class="meta">... </span>       a.remove(i)            a.remove(i)</span><br><span class="line"><span class="meta">... </span>       print(a)               print(a) </span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]    </span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">期望输出：<span class="comment"># 其实是期望来一个删一个</span></span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">[<span class="number">4</span>]</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
 <ul>
-<li>解决方案：<br>　　<strong>1.</strong> 定义一个空列表用来保存for循环中需要删除的值，出循环之后统一<code>remove()</code><br>　　<strong>2.</strong> 倒序删除（推荐！）</li>
+<li>解决方案：
+　　<strong>1.</strong> 定义一个空列表用来保存for循环中需要删除的值，出循环之后统一<code>remove()</code><br>　　<strong>2.</strong> 倒序删除（推荐！）</li>
 </ul>
 <h5 id="2-队列的赋值操作"><a href="#2-队列的赋值操作" class="headerlink" title="2.  队列的赋值操作"></a>2.  队列的赋值操作</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">queue = deque()</span><br><span class="line">queue_next = deque()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    queue.append(i)</span><br><span class="line">queue_next = queue</span><br><span class="line">queue_next:  deque([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">queue.pop()</span><br><span class="line">queue_next:  deque([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-<p>以上涉及到一个问题：Python中对象的赋值、浅拷贝、深拷贝<br>① python中，赋值是建立对象的引用<br> 　　不可变数据类型(Numbers、String、Tuple): 赋值后如果更改变量，会创建一个新值，同时改变内存地址。<br>　　可变数据类型(List、Dict): 内存地址保持不变</p>
+<p>以上涉及到一个问题：Python中对象的赋值、浅拷贝、深拷贝<br>① python中，赋值是建立对象的引用
+ 　　不可变数据类型(Numbers、String、Tuple): 赋值后如果更改变量，会创建一个新值，同时改变内存地址。
+　　可变数据类型(List、Dict): 内存地址保持不变</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">"amilyxy"</span>  / a = [<span class="string">"amilyxy"</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)   </span><br><span class="line"><span class="number">139863454833944</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)   </span><br><span class="line"><span class="number">139863454833944</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b +=<span class="string">" go!"</span>  /  b .append(<span class="string">" go!"</span>)</span><br><span class="line"> <span class="string">'amilyxy go!'</span>  /  [<span class="string">'amilyxy'</span>, <span class="string">' go!'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">"amilyxy"</span>  /  [<span class="string">'amilyxy'</span>, <span class="string">' go!'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)   </span><br><span class="line"><span class="number">139863455613104</span>  / ab一样</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)   </span><br><span class="line"><span class="number">139863454833944</span></span><br></pre></td></tr></table></figure>
 <p>② 浅拷贝：浅拷贝创建新对象，内容是原对象的引用<br>　三种形式：切片<code>b = a[:]</code> 、copy() <code>b = a.copy()</code>、工厂函数<code>b = list(a)</code><br>　<strong>注意:</strong> 浅拷贝只拷贝了父对象，其子对象是引用，指向统一内存空间 ,详情看下面代码段。<br>③ 深拷贝：完全拷贝其父对象和子对象  </p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@ 实例源自菜鸟课程</span><br><span class="line">import copy</span><br><span class="line"><span class="keyword">a</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]] <span class="comment">#原始对象</span></span><br><span class="line"> </span><br><span class="line">b = <span class="keyword">a</span>                       <span class="comment">#赋值，传对象的引用</span></span><br><span class="line">c = copy.copy(<span class="keyword">a</span>)            <span class="comment">#对象拷贝，浅拷贝</span></span><br><span class="line">d = copy.deepcopy(<span class="keyword">a</span>)        <span class="comment">#对象拷贝，深拷贝</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">a</span>.append(<span class="number">5</span>)                 <span class="comment">#修改对象a</span></span><br><span class="line"><span class="keyword">a</span>[<span class="number">4</span>].append(<span class="string">'c'</span>)            <span class="comment">#修改对象a中的['a', 'b']数组对象</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">a</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>]</span><br><span class="line">b = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>]</span><br><span class="line">c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]]</span><br><span class="line">d = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]]</span><br></pre></td></tr></table></figure>
 <ul>
-<li>解决方案<br>　　<strong>1.</strong> 使用<code>copy()</code>或者<code>deepcopy()</code><br>　　<strong>2.</strong>   重新声明  </li>
+<li>解决方案<br>　　<strong>1.</strong> 使用<code>copy()</code>或者<code>deepcopy()</code> 
+　　<strong>2.</strong>   重新声明  </li>
 </ul>
-<h5 id="3-关于python中set"><a href="#3-关于python中set" class="headerlink" title="3. 关于python中set()"></a>3. 关于python中set()</h5><p>①  python中set和dict是一个无序不重复元素集<br>② set.add() 插入位置是不定<br>③  set.pop() 出来的是最左边的元素</p>
+<h5 id="3-关于python中set"><a href="#3-关于python中set" class="headerlink" title="3. 关于python中set()"></a>3. 关于python中set()</h5><p>①  python中set和dict是一个无序不重复元素集<br>② set.add() 插入位置是不定
+③  set.pop() 出来的是最左边的元素</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">"amilyxy"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = set(a)</span><br><span class="line">&#123;<span class="string">'i'</span>, <span class="string">'a'</span>, <span class="string">'m'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.add(<span class="string">"hello"</span>)</span><br><span class="line">&#123;<span class="string">'i'</span>, <span class="string">'a'</span>, <span class="string">'m'</span>, <span class="string">'hello'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.pop()</span><br><span class="line"><span class="string">'i'</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="今日份的Tips："><a href="#今日份的Tips：" class="headerlink" title="今日份的Tips："></a>今日份的Tips：</h4><ul>
@@ -424,7 +438,8 @@
       depth += <span class="number">1</span>
       <span class="keyword">return</span> <span class="number">0</span></code></pre>
 </li>
-<li><strong>Tips-2</strong>：TimeComplexity<br>① 简直amazing，上面说了我的方法一直超时，也是没有考虑到list和set中<code>x in s</code>操作时间复杂度问题。<br>② list、set、dict、queue 时间复杂度指路→<a href="https://wiki.python.org/moin/TimeComplexity" target="_blank" rel="noopener">TimeComplexity</a><br>总而言之：<strong>“判断值是否存在，一定不要用list，时间复杂度为O(n)，而set和dict由于用hash实现，时间复杂度为O(1)”</strong>  </li>
+<li><strong>Tips-2</strong>：TimeComplexity
+① 简直amazing，上面说了我的方法一直超时，也是没有考虑到list和set中<code>x in s</code>操作时间复杂度问题。<br>② list、set、dict、queue 时间复杂度指路→<a href="https://wiki.python.org/moin/TimeComplexity" target="_blank" rel="noopener">TimeComplexity</a><br>总而言之：<strong>“判断值是否存在，一定不要用list，时间复杂度为O(n)，而set和dict由于用hash实现，时间复杂度为O(1)”</strong>  </li>
 </ul>
 
       
@@ -545,7 +560,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -621,7 +636,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

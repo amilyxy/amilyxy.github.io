@@ -98,7 +98,7 @@
 <meta property="og:description" content="绝不瞎折腾，只管自需 😑">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E7%9E%8E%E6%8A%98%E8%85%BE&#x2F;hexo_math.jpg">
-<meta property="og:updated_time" content="2019-12-21T10:04:20.000Z">
+<meta property="og:updated_time" content="2019-12-24T03:24:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E7%9E%8E%E6%8A%98%E8%85%BE&#x2F;hexo_math.jpg">
 
@@ -373,12 +373,13 @@
 </tbody></table>
 </li>
 </ul>
-<h2 id="Hexo换行"><a href="#Hexo换行" class="headerlink" title="Hexo换行"></a>Hexo换行</h2><p>Expected behavior： 两个空格实现换行<br>Actual behavior： 文本编辑换行即为换行（这样好难受，一段句子写好长才能换行，这也太不markdown了<br>solution：  </p>
+<h2 id="Hexo换行"><a href="#Hexo换行" class="headerlink" title="Hexo换行"></a>Hexo换行</h2><p>Expected behavior： 两个空格或空行实现换行<br>Actual behavior： 文本编辑中换行即为换行（这样好难受，一段句子写好长才能换行，这也太不markdown了<br>solution：  </p>
 <ul>
 <li><strong>安装：</strong> hexo-renderer-marked   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></li>
-<li><strong>站点配置文件</strong> <code>_config.yml</code> 中添加：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">gfm:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">pedantic:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">sanitize:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">tables:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">breaks:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">smartLists:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">smartypants:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">modifyAnchors:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">autolink:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<li><strong>站点配置文件</strong> <code>_config.yml</code> 中添加：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">gfm:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">pedantic:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">sanitize:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">tables:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">breaks:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">smartLists:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">smartypants:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">modifyAnchors:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">autolink:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>坑</strong><br>换行问题倒是解决了，但是hexo渲染的时候将换行符替换成了空格，呈现两个文
+字中间的空格现象，不得不说，非常突兀。<br>查了一下，原生英文环境，英文单词 English words 之间需要用空格区分的，而中文表述不需要空格，此时的换行符引入的空格就会出现问题…乌鸡鲅鱼，
+为了美观可以将就在标点处换行，不会太明显，后续再看有什么解决方法。</li>
 </ul>
 <h2 id="hexo中插入数学公式"><a href="#hexo中插入数学公式" class="headerlink" title="hexo中插入数学公式"></a>hexo中插入数学公式</h2><p>本来想写一下损失函数的，写了一半想想李航的统计学习讲的挺详细的，就算了，编辑到一半的公式也作废，但还是记录一下：<strong>hexo如何构建数学公式</strong>  </p>
 <ul>
@@ -456,6 +457,10 @@ $$ w_{j}=\frac{\sum_{i=1}^{N} x_{i} y_{i}}{\sum_{i=1}^{N} x_{i}^{j+1}}, \quad j=
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/29/LC%E5%90%90%E8%A1%80%E6%95%B4%E7%90%86%E4%B9%8Bweekly-contest%E7%AF%87/" rel="prev" title="LC吐血整理之weekly_contest篇">
+                LC吐血整理之weekly_contest篇 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -538,7 +543,7 @@ $$ w_{j}=\frac{\sum_{i=1}^{N} x_{i} y_{i}}{\sum_{i=1}^{N} x_{i}^{j+1}}, \quad j=
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -614,7 +619,7 @@ $$ w_{j}=\frac{\sum_{i=1}^{N} x_{i} y_{i}}{\sum_{i=1}^{N} x_{i}^{j+1}}, \quad j=
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

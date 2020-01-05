@@ -360,8 +360,10 @@
       
 
       
-        <p>　近来上ARM选修课找老师借了STM32来玩玩，准确来说是一块集成icore3和CycloneIV的双核心板。<br>　之前一直以为<del>keil是专门为51单片机而设计的</del>，没想到比想象中的要强大(怪我太辣鸡==)，C语言是独立于指令集的高级语言，大部分情况下代码都是一致的，但是不同单片机厂商和各家的IDE头文件定义形式不同或者编译器解释(编译)差别等等，造成了不同的开发环境，就好比用IAR也能开发51一样。<br>　新手刚开始接触STM32F407，以最简单的LED闪烁来说说keilMDK的工程创建步骤：</p>
-<h4 id="1-下载标准固件库"><a href="#1-下载标准固件库" class="headerlink" title="1.下载标准固件库"></a>1.下载标准固件库</h4><p>　ST官方提供的固件库实际上就是一些底层，提供用户函数调用的接口，减少了用户对寄存器的直接操作。<br><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/1.png" alt="STM32F4xx_DSP_StdPeriph_Lib_V1.8.0—固件库内容"></p>
+        <p>　近来上ARM选修课找老师借了STM32来玩玩，准确来说是一块集成icore3和CycloneIV的双核心板。<br>　之前一直以为<del>keil是专门为51单片机而设计的</del>，没想到比想象中的要强大(怪我太辣鸡==)，C语言是独立于指令集的高级语言，大部分情况下代码都是一致的，但是不同单片机厂商和各家的IDE头文件定义形式不同或者编译器解释(编译)差别等等，造成了不同的开发环境，就好比用IAR也能开发51一样。
+　新手刚开始接触STM32F407，以最简单的LED闪烁来说说keilMDK的工程创建步骤：</p>
+<h4 id="1-下载标准固件库"><a href="#1-下载标准固件库" class="headerlink" title="1.下载标准固件库"></a>1.下载标准固件库</h4><p>　ST官方提供的固件库实际上就是一些底层，提供用户函数调用的接口，减少了用户对寄存器的直接操作。
+<img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/1.png" alt="STM32F4xx_DSP_StdPeriph_Lib_V1.8.0—固件库内容"></p>
 <ul>
 <li><strong>Libraries</strong> 里面是驱动库的源代码及启动文件</li>
 <li><strong>Project</strong> 用驱动库写的例子和工程模板</li>
@@ -378,31 +380,47 @@
 <li><strong>stm32f3xx_rcc.c 和 stm32f4xx_rcc.h</strong> 是与 RCC 相关的一些操作函数</li>
 <li><strong>startup_stm32f40_41xxx.s</strong> 重要的启动文件</li>
 </ul>
-<p>下面就来建立一个自己的工程模板，首先建立下面几个文件夹：<br><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/2.png" alt="模板目录"><br>　其中<code>DERIVER</code>用来放置外设库文件以及启动文件（将 \Libraries 下的STM32F4xx_StdPeriph_Driver复制到其中），<code>MDK-ARM</code>用来放置工程文件，<code>USER</code>则是用户自己创建的自定义功能文件<br>　这里要注意一点，可以删除<code>main.h</code>，将stm32f4xx_it.c中间的<code>#include &quot;main.h&quot;</code>以及<code>SysTick_Handler()</code>函数里面的<code>TimingDelay_Decrement()</code>函数注释掉即可</p>
+<p>下面就来建立一个自己的工程模板，首先建立下面几个文件夹：
+<img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/2.png" alt="模板目录">
+　其中<code>DERIVER</code>用来放置外设库文件以及启动文件（将 \Libraries 下的STM32F4xx_StdPeriph_Driver复制到其中），<code>MDK-ARM</code>用来放置工程文件，<code>USER</code>则是用户自己创建的自定义功能文件
+　这里要注意一点，可以删除<code>main.h</code>，将stm32f4xx_it.c中间的<code>#include &quot;main.h&quot;</code>以及<code>SysTick_Handler()</code>函数里面的<code>TimingDelay_Decrement()</code>函数注释掉即可</p>
 <p><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/3.png" alt="在CMSIS文件夹下添加如下文件"></p>
-<p>　下面正式建立一个工程，类似51单片机建立步骤将工程放在MDK-ARM目录下，具体可以省略了，弹出的<em>Mnange Run</em> 窗口点击 <em>Cancel</em><br>　在左栏工程目录下右键选择 <em>Manage Projct Iterms</em> 并添加如图所示的源文件<br><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/4.png" alt=""></p>
+<p>　下面正式建立一个工程，类似51单片机建立步骤将工程放在MDK-ARM目录下，具体可以省略了，弹出的<em>Mnange Run</em> 窗口点击 <em>Cancel</em>
+　在左栏工程目录下右键选择 <em>Manage Projct Iterms</em> 并添加如图所示的源文件
+<img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/4.png" alt=""></p>
 <p><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/5.png" alt=""></p>
 <h4 id="3-LED实现"><a href="#3-LED实现" class="headerlink" title="3.LED实现"></a>3.LED实现</h4><p>贴一波程序….实现LED闪烁还是比较容易的，主要利用官方给的底层就行.</p>
 <p><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/6.png" alt="LED循环闪烁"></p>
 <h4 id="4-折腾了好久的小问题"><a href="#4-折腾了好久的小问题" class="headerlink" title="4.折腾了好久的小问题"></a>4.折腾了好久的小问题</h4><ul>
-<li>编译提示无法打开.o文件，后面跟着一大串的地址，比如 C:\User\王某某.…..<br>连编译一个最简单的 <em>main</em> 加 <em>while(1)</em> 循环老是出错</li>
+<li>编译提示无法打开.o文件，后面跟着一大串的地址，比如 C:\User\王某某.….. 
+连编译一个最简单的 <em>main</em> 加 <em>while(1)</em> 循环老是出错</li>
 </ul>
 <blockquote>
 <p>Fatal error: L6002U: Could not open file main.o: No such file or directory</p>
 </blockquote>
 <p>　<code>.o</code>后缀文件是编译过程中产生的，每个文件都生成.o文件，再把所有的.o文件链接成最后的执行程序，具体解决方法是，在电脑的高级系统设置下修改环境变量temp和tmp</p>
-<p><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/7.png" alt=""><br>　C:\useramily这个是文件夹名可以随意，但是可能你发现修改了这个之后依然无法成功编译，重点在这，你需要先在C盘创建这个文件夹，然后再修改！！！这个坑跳了半天才跳出来….</p>
+<p><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/7.png" alt="">
+　C:\useramily这个是文件夹名可以随意，但是可能你发现修改了这个之后依然无法成功编译，重点在这，你需要先在C盘创建这个文件夹，然后再修改！！！这个坑跳了半天才跳出来….</p>
 <ul>
-<li>提示 .initialize=initialize 不是一个预期的表达式<br>程序本身我检查了数遍，没有问题！！对比了例程发现！！在工程设置中Target中有一个设置不一样..哭晕</li>
+<li>提示 .initialize=initialize 不是一个预期的表达式 
+程序本身我检查了数遍，没有问题！！对比了例程发现！！在工程设置中Target中有一个设置不一样..哭晕</li>
 </ul>
-<p><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/8.png" alt="报错内容"><br><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/9.png" alt="填入--c99"><br>　在 <em>Option for target</em> 的 <em>Target</em> 下填入如图内容，<strong>使其支持–c99标准</strong>，编译就能通过，所以我不得不去查一下 <code>--c99</code> 的含义…</p>
+<p><img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/8.png" alt="报错内容">
+<img src="/images/%E7%9E%8E%E6%8A%98%E8%85%BE/9.png" alt="填入--c99">
+　在 <em>Option for target</em> 的 <em>Target</em> 下填入如图内容，<strong>使其支持–c99标准</strong>，编译就能通过，所以我不得不去查一下 <code>--c99</code> 的含义…</p>
 <blockquote>
-<p>C99是在C89/90的基础上发展起来的，增加了基本数据类型、关键字和一些系统函数等<br>　比如支持可变参数的宏定义<br>　新增了一种结构体/数组的初始化方式，名叫designated initializers 即：<br>　struct { int a[3], b; } w[] ={ [0].a = {1}, [1].a[0] = 2 };[9]<br>还有很多很多，有想法可以去看看~</p>
+<p>C99是在C89/90的基础上发展起来的，增加了基本数据类型、关键字和一些系统函数等
+　比如支持可变参数的宏定义
+　新增了一种结构体/数组的初始化方式，名叫designated initializers 即：
+　struct { int a[3], b; } w[] ={ [0].a = {1}, [1].a[0] = 2 };[9]
+还有很多很多，有想法可以去看看~</p>
 </blockquote>
 <p>　找到这个原因之后，想了想自己也接触了一年的单片机竟然连这个都不知道，尽管无数次使用Keil编程，但是真真的熟悉里面的工程配置，ROM地址，汇编标准什么的了解的实在够少，不管是我还是身边的人，学习单片机嵌入式FPGA学习IDE环境，都只是简单的了解创建工程..反正..能用就行，不是么…才疏学浅~</p>
 <p>🙂 如果还碰到稀奇古怪的问题，我就干脆单独拿一篇文章来写问题好了….</p>
 <hr>
-<p>哇，久违的写文章，实在是被这个创建工程弄的很烦，下一个可以考虑  vivado 工程创建。<br>2016/4/11<br>　　　　amilyxy</p>
+<p>哇，久违的写文章，实在是被这个创建工程弄的很烦，下一个可以考虑  vivado 工程创建。
+2016/4/11
+　　　　amilyxy</p>
 
       
     </div>
@@ -522,7 +540,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -598,7 +616,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
