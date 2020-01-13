@@ -97,8 +97,11 @@
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="12.29开始做周赛！">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-05T12:40:53.000Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;quick_union.png">
+<meta property="og:updated_time" content="2020-01-13T13:13:05.000Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7.png">
 
 
 
@@ -365,8 +368,31 @@
 <h4 id="5305-获取你好友已观看的视频"><a href="#5305-获取你好友已观看的视频" class="headerlink" title="5305. 获取你好友已观看的视频"></a>5305. 获取你好友已观看的视频</h4><p>今日份<strong>Tips：</strong> <code>sorted(iterable,key,reverse)</code><br><strong>iterable:</strong> 表示可迭代的对象，例如dict.keys(), dict.items()<br><strong>key:</strong> 是一个函数，用来选择参与排序的元素<br><strong>reverse:</strong> 默认为False(升序)，reverse=True(表示降序)  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 善用sorted中的key完成多条件排序</span></span><br><span class="line"><span class="comment"># 举个栗子 对dicta先按value进行升序排序 如果value相同则按key升序排序(字典序)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = &#123;<span class="string">'amilyxy'</span>: <span class="number">4</span>, <span class="string">'guying'</span>: <span class="number">2</span>, <span class="string">'love'</span>: <span class="number">1</span>, <span class="string">'loveme'</span>: <span class="number">1</span>, <span class="string">'loi'</span>: <span class="number">1</span>, <span class="string">'grace'</span>:<span class="number">2</span>, <span class="string">'not'</span>:<span class="number">6</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(a.items(), key = <span class="keyword">lambda</span> x:(x[<span class="number">1</span>], x[<span class="number">0</span>]))</span><br><span class="line">[(<span class="string">'loi'</span>, <span class="number">1</span>), (<span class="string">'love'</span>, <span class="number">1</span>), (<span class="string">'loveme'</span>, <span class="number">1</span>), (<span class="string">'grace'</span>, <span class="number">2</span>), (<span class="string">'guying'</span>, <span class="number">2</span>), (<span class="string">'amilyxy'</span>, <span class="number">4</span>), (<span class="string">'not'</span>, <span class="number">6</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(a.items(), key = <span class="keyword">lambda</span> x:(-x[<span class="number">1</span>], x[<span class="number">0</span>]))   <span class="comment"># value 降序</span></span><br><span class="line">[(<span class="string">'not'</span>, <span class="number">6</span>), (<span class="string">'amilyxy'</span>, <span class="number">4</span>), (<span class="string">'grace'</span>, <span class="number">2</span>), (<span class="string">'guying'</span>, <span class="number">2</span>), (<span class="string">'l'</span>, <span class="number">1</span>), (<span class="string">'loi'</span>, <span class="number">1</span>), (<span class="string">'love'</span>, <span class="number">1</span>), (<span class="string">'loveme'</span>, <span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
 
-
-
+<h3 id="171场周赛"><a href="#171场周赛" class="headerlink" title="171场周赛"></a>171场周赛</h3><h4 id="5307-将整数转换为两个无零整数的和"><a href="#5307-将整数转换为两个无零整数的和" class="headerlink" title="5307. 将整数转换为两个无零整数的和"></a>5307. 将整数转换为两个无零整数的和</h4><p>　　感觉我做的有点投机取巧了，直接str去判断0是否存在，看了一下两个题解（区别就是如何判断0的存在）：<br>① 有一个跟我差不多，也是转成string类型，然后判断是否含‘0’；<br>② 通过<code>x%10?=0</code>来筛选。  </p>
+<h4 id="5308-或运算的最小翻转次数"><a href="#5308-或运算的最小翻转次数" class="headerlink" title="5308. 或运算的最小翻转次数"></a>5308. 或运算的最小翻转次数</h4><p>　　昨天做201和89题都用到了位运算，可惜我这个题根本就没有用位运算做…哎，再一次投机取巧，太难了…    </p>
+<h4 id="5309-连通网络的操作次数"><a href="#5309-连通网络的操作次数" class="headerlink" title="5309. 连通网络的操作次数"></a>5309. 连通网络的操作次数</h4><p>　　刚开始没想那么多，按照单连通域去做的，跑到第25个测试用例的时候报错才发现问题，幸好发现问题了哈哈哈，还没写过求连通块的题。<br>看题解提到了图的连通度这个概念，查了一下，好像跟这个没啥关系，连通度有点复杂，有机会再看吧…<br><strong>求解思路：</strong><br><strong>Ⅰ 构建Graph，DFS/BFS遍历求子图数</strong><br>具体方法：<br>　　对图中每一个顶点进行DFS，DFS的条件是该顶点没有被遍历过，如果子图具有连通性，那么从子图中某个顶点出发，一次DFS就遍历所有子图中的顶点。<br><img src="/images/leecode/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7.png" alt="">
+　　这个方法缺点就是，面对大型图，效率偏低，实践了一下，如果按照常规不做任何处理的DFS方式求解该题，在第34个测试用例处报超出时间限制错误。<br><strong>Ⅱ 并查集Union-Find</strong><br>并查集是解决动态连通性问题的一类非常高效的数据结构，也可以说是一种算法（暂不考虑连通路径。<br><strong>⑴ Quick-Find算法</strong><br>Quick-Find包括三个步骤：
+<img src="/images/leecode/quick_union.png" alt=""></p>
+<p>① 初始化n个组分别代表N中的n个节点（N为描述图的若干连接对，形似<code>[[0,1],[0,2],[0,3],[1,2],[1,3]]</code>）；<br>② 对于N中的每一对连接i，判断节点<code>i[0]</code>和节点<code>i[1]</code>是否属于同一组，如果属于同一组则不需要任何处理，如果不属于同一组则将<code>i[0]</code>和<code>i[1]</code>组中所有节点归为一组（其实，重点就在于如果合并两个组）；<br>③ 遍历N之后，计算互不相交的组数。    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码 其中n为N中涉及的所有节点，N为连接对</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union_find</span><span class="params">(n, N)</span>:</span></span><br><span class="line">    <span class="comment"># 构建一个dict初始化设置查集</span></span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):  </span><br><span class="line">        dic[i] = i</span><br><span class="line">    <span class="comment"># 遍历所有连接对</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> N:</span><br><span class="line">        <span class="keyword">if</span> dic[i[<span class="number">0</span>]]!=dic[i[<span class="number">1</span>]]:</span><br><span class="line">            temp = dic[i[<span class="number">0</span>]]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> dic[j] == temp:</span><br><span class="line">                    dic[j] = dic[i[<span class="number">1</span>]]</span><br><span class="line">    <span class="comment"># 计算dic中组数</span></span><br><span class="line">    <span class="keyword">return</span> len(set(dic.values()))</span><br></pre></td></tr></table></figure>
+<p>　　可以看到，使用<code>dict</code>查找非常快，但合并组时需要遍历dic，时间复杂度非常高，在这个题中在第32个测试用例，当n=1000时超时。<br><strong>⑵ Quick-Union算法</strong><br>怎么快速合并呢？？（大佬们）提供了一种树结构解决方案。<br>Quick-Union包括个步骤：<br>① 初始化n个根节点的树代表N中的n个节点；<br>② 对于N中每一组连接i，<code>findroot()</code>查找节点<code>i[0]</code>和节点<code>i[1]</code>的父节点，通过相同则属于同一棵树不做处理，如果不是同一个父节点，将<code>i[0]</code>的父节点设置为<code>i[1]</code>的父节点，并将根节点数减一；<br>③ 计算根节点数目作为连通块数。</p>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">union_find</span><span class="params">(n, N)</span>:</span>
+    <span class="comment"># 初始化n个根节点的树（这里可能用dict会好点？？？）</span>
+    tree = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]
+    count = n 
+    <span class="comment"># 查询父节点</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">findroot</span><span class="params">(node)</span>:</span>
+        <span class="keyword">while</span> node != tree[node]:
+            node = tree[node]
+        <span class="keyword">return</span> node
+    <span class="comment"># 遍历N中的连接对</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> connections:
+        rootl,  rootr = findroot(i[<span class="number">0</span>]), findroot(i[<span class="number">1</span>])
+        <span class="keyword">if</span> rootl != rootr:
+            tree[rootl] = rootr
+            count -= <span class="number">1</span>
+    <span class="keyword">return</span> count</code></pre>
+<p><strong>⑶ 后续还有加权快速合并方法(Weighted Quick Union)以及压缩路径方法</strong><br>可进一步减小时间复杂度，有兴趣在进一步了解哈…  </p>
 
       
     </div>
@@ -486,7 +512,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -497,7 +523,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -542,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#169场周赛"><span class="nav-number">1.</span> <span class="nav-text">169场周赛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5296-两棵二叉搜索树中的所有元素"><span class="nav-number">1.1.</span> <span class="nav-text">5296.两棵二叉搜索树中的所有元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5297-跳跃游戏III"><span class="nav-number">1.2.</span> <span class="nav-text">5297.跳跃游戏III</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#170场周赛"><span class="nav-number">2.</span> <span class="nav-text">170场周赛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5303-解码字母到整数映射"><span class="nav-number">2.1.</span> <span class="nav-text">5303.解码字母到整数映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5304-子数组异或查询"><span class="nav-number">2.2.</span> <span class="nav-text">5304.子数组异或查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5305-获取你好友已观看的视频"><span class="nav-number">2.3.</span> <span class="nav-text">5305. 获取你好友已观看的视频</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#169场周赛"><span class="nav-number">1.</span> <span class="nav-text">169场周赛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5296-两棵二叉搜索树中的所有元素"><span class="nav-number">1.1.</span> <span class="nav-text">5296.两棵二叉搜索树中的所有元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5297-跳跃游戏III"><span class="nav-number">1.2.</span> <span class="nav-text">5297.跳跃游戏III</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#170场周赛"><span class="nav-number">2.</span> <span class="nav-text">170场周赛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5303-解码字母到整数映射"><span class="nav-number">2.1.</span> <span class="nav-text">5303.解码字母到整数映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5304-子数组异或查询"><span class="nav-number">2.2.</span> <span class="nav-text">5304.子数组异或查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5305-获取你好友已观看的视频"><span class="nav-number">2.3.</span> <span class="nav-text">5305. 获取你好友已观看的视频</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#171场周赛"><span class="nav-number">3.</span> <span class="nav-text">171场周赛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5307-将整数转换为两个无零整数的和"><span class="nav-number">3.1.</span> <span class="nav-text">5307. 将整数转换为两个无零整数的和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5308-或运算的最小翻转次数"><span class="nav-number">3.2.</span> <span class="nav-text">5308. 或运算的最小翻转次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5309-连通网络的操作次数"><span class="nav-number">3.3.</span> <span class="nav-text">5309. 连通网络的操作次数</span></a></li></ol></li></ol></div>
             
 
           </div>

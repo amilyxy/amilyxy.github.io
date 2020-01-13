@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="人生苦短 我学python">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-21T05:16:05.000Z">
+<meta property="og:updated_time" content="2020-01-07T08:51:19.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -420,27 +420,37 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">"amilyxy"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = set(a)</span><br><span class="line">&#123;<span class="string">'i'</span>, <span class="string">'a'</span>, <span class="string">'m'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.add(<span class="string">"hello"</span>)</span><br><span class="line">&#123;<span class="string">'i'</span>, <span class="string">'a'</span>, <span class="string">'m'</span>, <span class="string">'hello'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'l'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.pop()</span><br><span class="line"><span class="string">'i'</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="今日份的Tips："><a href="#今日份的Tips：" class="headerlink" title="今日份的Tips："></a>今日份的Tips：</h4><ul>
-<li><strong>Tips-1</strong>：BFS深度<br>来了来了，看完题解发现有人跟我思路相差无几哈哈哈，借鉴一下他的深度的记录方法。<pre><code class="Python"><span class="string">'''</span>
-<span class="string">state(graph[i][j]) = S：graph[i][j]满足某种状态/条件S</span>
-<span class="string">'''</span>
-<span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">()</span>:</span>
-  queue = deque()
-  queue.append(begin)
-  depth = <span class="number">1</span>
-  <span class="keyword">while</span> queue:
-      n = len(queue)
-      <span class="keyword">for</span> _ <span class="keyword">in</span> range(n):
-          temp= queue.popleft()
-          <span class="keyword">if</span> state(graph[i][j]) = S:
-              // 相应处理
-          //all_node = 搜索该节点下层所有节点
-          // queue.append(all_node)
-      depth += <span class="number">1</span>
-      <span class="keyword">return</span> <span class="number">0</span></code></pre>
+<li><p><strong>Tips-1</strong>：BFS深度<br>来了来了，看完题解发现有人跟我思路相差无几哈哈哈，借鉴一下他的深度的记录方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">state(graph[i][j]) = S：graph[i][j]满足某种状态/条件S</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">()</span>:</span></span><br><span class="line">    queue = deque()</span><br><span class="line">    queue.append(begin)</span><br><span class="line">    depth = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        n = len(queue)</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(n):</span><br><span class="line">            temp= queue.popleft()</span><br><span class="line">            <span class="keyword">if</span> state(graph[i][j]) = S:</span><br><span class="line">                // 相应处理</span><br><span class="line">            //all_node = 搜索该节点下层所有节点</span><br><span class="line">            // queue.append(all_node)</span><br><span class="line">        depth += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><strong>Tips-2</strong>：TimeComplexity
-① 简直amazing，上面说了我的方法一直超时，也是没有考虑到list和set中<code>x in s</code>操作时间复杂度问题。<br>② list、set、dict、queue 时间复杂度指路→<a href="https://wiki.python.org/moin/TimeComplexity" target="_blank" rel="noopener">TimeComplexity</a><br>总而言之：<strong>“判断值是否存在，一定不要用list，时间复杂度为O(n)，而set和dict由于用hash实现，时间复杂度为O(1)”</strong>  </li>
+<li><p><strong>Tips-2</strong>：TimeComplexity
+① 简直amazing，上面说了我的方法一直超时，也是没有考虑到list和set中<code>x in s</code>操作时间复杂度问题。<br>② list、set、dict、queue 时间复杂度指路→<a href="https://wiki.python.org/moin/TimeComplexity" target="_blank" rel="noopener">TimeComplexity</a><br>总而言之：<strong>“判断值是否存在，一定不要用list，时间复杂度为O(n)，而set和dict由于用hash实现，时间复杂度为O(1)”</strong>    </p>
+</li>
 </ul>
+<h3 id="51-N皇后"><a href="#51-N皇后" class="headerlink" title="51.N皇后"></a>51.N皇后</h3><p>首先在这里引用一下<a href="https://leetcode-cn.com/problems/n-queens/solution/hui-su-suan-fa-xiang-jie-by-labuladong/" target="_blank" rel="noopener">某个题解</a>的总结<br>解决一个回溯问题，实际上就是一个决策树的遍历过程，需要思考<strong>三个问题</strong>： </p>
+<blockquote>
+<p>1.路径： 也就是已经做出的选择<br>2.选择列表： 当前可做的选择<br>3.结束条件： 达到决策树底层或者结点满足某个条件  </p>
+</blockquote>
+<p><strong>回溯框架</strong>：核心是for循环里面的递归，在递归之前「做选择」，在递归调用之后「撤销选择」  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 作者：labuladong</span></span><br><span class="line">result = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(路径, 选择列表)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> 满足结束条件:</span><br><span class="line">        result.add(路径)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> 选择 <span class="keyword">in</span> 选择列表:</span><br><span class="line">        做选择</span><br><span class="line">        backtrack(路径, 选择列表)</span><br><span class="line">        撤销选择</span><br></pre></td></tr></table></figure>
+<p>其实这个题还有一个关键，就是如何判别攻击位置（横竖肯定知道，主要是主对角线和次对角线的关系<br><code>main diagonal = col - row</code><br><code>subdiagonal = col+row</code>  </p>
+<h3 id="52-N皇后II"><a href="#52-N皇后II" class="headerlink" title="52.N皇后II"></a>52.N皇后II</h3><p>本来不打算写这个的，但是做题的时候用到了全局变量，找不到定义就很难受，举个栗子：<br>(1) 局部变量大家都知道用：     </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">outter</span><span class="params">()</span>:</span></span><br><span class="line">    a = <span class="number">1</span>  <span class="comment"># a = [1]</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">      a = <span class="number">3</span>  <span class="comment"># a[0] = 3</span></span><br><span class="line">      print(<span class="string">"the inner a is:"</span>, a)</span><br><span class="line">    inner()</span><br><span class="line">    print(<span class="string">"the outter a is :"</span>, a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outter()</span><br><span class="line">the inner a <span class="keyword">is</span>: <span class="number">3</span>    <span class="comment"># the inner a is: 3  </span></span><br><span class="line">the outter a <span class="keyword">is</span> : <span class="number">1</span>  <span class="comment"># the outter a is: 3</span></span><br></pre></td></tr></table></figure>
+<p>(2) python 全局变量使用：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">outter</span><span class="params">()</span>:</span></span><br><span class="line">    a = <span class="number">1</span>  <span class="comment"># a =[3,2]</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">      a += <span class="number">1</span>  <span class="comment"># a.append(4)</span></span><br><span class="line">    inner()</span><br><span class="line">    print(<span class="string">"the outter a is :"</span>, a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outter()</span><br><span class="line">Traceback (most recent call last):   <span class="comment"># a=[3,2,4]</span></span><br><span class="line">UnboundLocalError: local variable <span class="string">'a'</span> referenced before assignment</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>，当a为list、set、dict的时候，却不会报错<br><strong>原因</strong>：参考(1)</p>
+<ul>
+<li>普通变量如果在函数中赋值<code>a = 3</code>会有歧义，因为它既可以是表示引用全局变量a，也可以是创建一个新的局部变量，所以在python中，默认它的行为是创建局部变量，除非显式声明global。  </li>
+<li>对list/set/dict变量进行赋值<code>a[0] = 2</code>则不会有歧义，它是“明确的”，如果把a当作是局部变量的话，它会报KeyError，所以它只能是引用全局的b，因此不需要显式声明global。  </li>
+</ul>
+<p>还是尽量不要使用全局变量吧，不方便调试。  </p>
+<p>(3) global 先声明全局变量  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">outter</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> a</span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">      <span class="keyword">global</span> a</span><br><span class="line">      a += <span class="number">1</span></span><br><span class="line">    inner()</span><br><span class="line">    print(<span class="string">"the outter a is :"</span>, a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>outter()</span><br><span class="line">the outter a <span class="keyword">is</span> : <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
       
     </div>
@@ -560,7 +570,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -571,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -616,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#200-岛屿数量"><span class="nav-number">1.</span> <span class="nav-text">200. 岛屿数量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DFS"><span class="nav-number">1.1.</span> <span class="nav-text">DFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFS"><span class="nav-number">1.2.</span> <span class="nav-text">BFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDDFS"><span class="nav-number">1.3.</span> <span class="nav-text">IDDFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#130-被围绕的区域"><span class="nav-number">2.</span> <span class="nav-text">130.被围绕的区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#127-单词接龙"><span class="nav-number">3.</span> <span class="nav-text">127.单词接龙</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#踩坑记录："><span class="nav-number">3.1.</span> <span class="nav-text">踩坑记录：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-队列的赋值操作"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.  队列的赋值操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-关于python中set"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 关于python中set()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#今日份的Tips："><span class="nav-number">3.2.</span> <span class="nav-text">今日份的Tips：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#200-岛屿数量"><span class="nav-number">1.</span> <span class="nav-text">200. 岛屿数量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DFS"><span class="nav-number">1.1.</span> <span class="nav-text">DFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFS"><span class="nav-number">1.2.</span> <span class="nav-text">BFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDDFS"><span class="nav-number">1.3.</span> <span class="nav-text">IDDFS:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#130-被围绕的区域"><span class="nav-number">2.</span> <span class="nav-text">130.被围绕的区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#127-单词接龙"><span class="nav-number">3.</span> <span class="nav-text">127.单词接龙</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#踩坑记录："><span class="nav-number">3.1.</span> <span class="nav-text">踩坑记录：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 循环中谨慎删除列表元素（这个真的是重点，输出死活不对，排查了好久）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-队列的赋值操作"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.  队列的赋值操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-关于python中set"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 关于python中set()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#今日份的Tips："><span class="nav-number">3.2.</span> <span class="nav-text">今日份的Tips：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51-N皇后"><span class="nav-number">4.</span> <span class="nav-text">51.N皇后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#52-N皇后II"><span class="nav-number">5.</span> <span class="nav-text">52.N皇后II</span></a></li></ol></div>
             
 
           </div>

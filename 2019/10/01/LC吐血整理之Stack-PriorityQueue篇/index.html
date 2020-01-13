@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="人生苦短 我学python">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-21T05:26:25.000Z">
+<meta property="og:updated_time" content="2020-01-11T06:24:38.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -364,8 +364,10 @@
 <li>deque 实现<br>注意，Python中用队列实现栈，只能使用<code>deque().append()</code>、<code>deque().pop()</code>或者<code>deque().appendleft()</code>、<code>deque().popleft()</code>，具体python实现移步github</li>
 </ul>
 <h3 id="225-用队列实现栈"><a href="#225-用队列实现栈" class="headerlink" title="225.用队列实现栈"></a>225.用队列实现栈</h3><ul>
-<li>deque 实现<br>注意，Python中用队列实现栈，只能使用<code>deque().append()</code>、<code>deque().popleft()</code>或者<code>deque().appendleft()</code>、<code>deque().pop()</code>，具体python实现移步github</li>
+<li>deque 实现<br>注意，Python中用队列实现栈，只能使用<code>deque().append()</code>、<code>deque().popleft()</code>或者<code>deque().appendleft()</code>、<code>deque().pop()</code>，具体python实现移步github  </li>
 </ul>
+<h3 id="150-逆波兰表达式求值"><a href="#150-逆波兰表达式求值" class="headerlink" title="150. 逆波兰表达式求值"></a>150. 逆波兰表达式求值</h3><p>不知道为啥，我每次做出中等题，评论就说这个题当属easy题，每次做出困难题，平均就说这个题当属medium..我太难了…<br>思路就是：<br>① 循环遍历输入数组中的元素<br>② 如果元素为数字就压入栈，元素为操作符就从栈中弹出两个数字，进行计算<br><strong>今日份的Tips-1：</strong><br>本来想，先得到最终加括号的表达式，最后再<code>eval()</code>，一次性得到结果，没想到在13个测试用例报<code>MemoryError</code>，原来<code>eval()</code>也是有长度限制的呀！<br>具体解决方案：<a href="https://kyle.ai/blog/6555.html" target="_blank" rel="noopener">安全地使用Python中的eval</a>，我就没看了，反正用写了另一种方式..  </p>
+<p><strong>今日份Tips-2：</strong><br>写<code>eval(string)</code>，构建string时pop出来的哪个数为除数哪个数为被除数，需要用到<code>str.format()</code>,可设置参数修改顺序，参考：<a href="https://www.runoob.com/python/att-string-format.html" target="_blank" rel="noopener">Python format 格式化函数</a>。  </p>
 
       
     </div>
@@ -485,7 +487,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -496,7 +498,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -541,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#155-最小栈"><span class="nav-number">1.</span> <span class="nav-text">155.最小栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#232-用栈实现队列"><span class="nav-number">2.</span> <span class="nav-text">232.用栈实现队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#225-用队列实现栈"><span class="nav-number">3.</span> <span class="nav-text">225.用队列实现栈</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#155-最小栈"><span class="nav-number">1.</span> <span class="nav-text">155.最小栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#232-用栈实现队列"><span class="nav-number">2.</span> <span class="nav-text">232.用栈实现队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#225-用队列实现栈"><span class="nav-number">3.</span> <span class="nav-text">225.用队列实现栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#150-逆波兰表达式求值"><span class="nav-number">4.</span> <span class="nav-text">150. 逆波兰表达式求值</span></a></li></ol></div>
             
 
           </div>
