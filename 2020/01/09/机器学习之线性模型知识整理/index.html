@@ -99,7 +99,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%9D%A2%E7%BB%8F%E6%95%B4%E7%90%86&#x2F;lda.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%9D%A2%E7%BB%8F%E6%95%B4%E7%90%86&#x2F;ovo_ovr.jpg">
-<meta property="og:updated_time" content="2020-01-09T14:51:20.000Z">
+<meta property="og:updated_time" content="2020-01-14T12:29:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E9%9D%A2%E7%BB%8F%E6%95%B4%E7%90%86&#x2F;lda.jpg">
 
@@ -357,8 +357,7 @@
       
 
       
-        <p><strong>知识来源：</strong>
-<a href="https://book.douban.com/subject/26708119/" target="_blank" rel="noopener">机器学习</a> ，也就是传说中的西瓜书，by周志华<br><a href="https://book.douban.com/subject/10590856/" target="_blank" rel="noopener">统计学习方法</a>，真的是满满的干货，知识丰富，by李航<br>网上各种干货精选  </p>
+        <p><strong>知识来源：</strong><br><a href="https://book.douban.com/subject/26708119/" target="_blank" rel="noopener">机器学习</a> ，也就是传说中的西瓜书，by周志华<br><a href="https://book.douban.com/subject/10590856/" target="_blank" rel="noopener">统计学习方法</a>，真的是满满的干货，知识丰富，by李航<br>网上各种干货精选  </p>
 <h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>　　给定d个属性描述的示例$\boldsymbol{x}=\left(x_{1};x_{2};\ldots;x_{d}\right)$，其中$x_{i}$是$\boldsymbol{x}$在第i个属性上的取值，线性模型试图学得一个通过属性的线性组合来进行预测的函数，即：
 $$f(x)=w_{1} x_{1}+w_{2} x_{2}+\ldots+w_{d} x_{d}+b$$
 写成向量形式：
@@ -379,25 +378,25 @@ $$y=\frac{1}{1+e^{-\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b\right)}}$$
 $$\ln \frac{y}{1-y}=\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b$$
 其中，$\frac{y}{1-y}$ 为“几率”，$\ln \frac{y}{1-y}$ 为对数几率。  </p>
 </li>
-<li><p><strong>损失函数</strong> (可以是ln也可以是log)<br>$$-ln\left(w, b\right)=\sum_{i=1}^{m}-y_{i} \ln \left(f_{w,b}(x_{i})\right)-\left(1-y_{i}\right) \ln \left(1-f_{w,b}(x_{i})\right)$$</p>
+<li><p><strong>损失函数</strong> (可以是ln也可以是log)<br>设$P\left(y=1|x\right)=f_{w,b}(x)$，$P\left(y=0|x\right)=1-f_{w,b}(x)$，逻辑回归采用极大似然估计来求模型参数w和b，对数似然函数为：<br>$$-ln\left(w, b\right)=\sum_{i=1}^{m}-y_{i} \ln \left(f_{w,b}(x_{i})\right)-\left(1-y_{i}\right) \ln \left(1-f_{w,b}(x_{i})\right)$$
+可以看到，逻辑回归损失函数为log损失(极大似然损失)，常用梯度下降法、牛顿法、拟牛顿法、共轭梯度下降法来解决。  </p>
 </li>
 <li><p><strong>梯度下降参数迭代公式</strong><br>$$w^{j}=w^{j}+\alpha \sum_{i=1}^{m} \left(y_{i}-f_{w,b}(x_{i})\right) x_{i}^{j}$$</p>
 </li>
 <li><p><strong>logistics模型</strong><br>① <strong>二分类模型</strong>
-$$P(Y=1 | x)=\frac{\exp (w \cdot x)}{1+\exp (w \cdot x)}$$
-$$P(Y=0 | x)=\frac{1}{1+\exp (w \cdot x)}$$
-② <strong>多分类模型</strong>
-$$P(Y=i | x)=\frac{\exp \left(w_{i} \cdot x\right)}{1+\sum_{i=1}^{n-1} \exp \left(w_{i} \cdot x\right)}, i=1,2,3 \ldots, n-1$$
-$$P(Y=i | x)=\frac{1}{1+\sum_{i=1}^{n-1} \exp \left(w_{i} \cdot x\right)}$$ </p>
+$$P(Y=1 | x)=\frac{\exp (\boldsymbol{w}^{\mathrm{T}} \cdot x+b)}{1+\exp (\boldsymbol{w}^{\mathrm{T}} \cdot x+b)}$$
+$$P(Y=0 | x)=\frac{1}{1+\exp (\boldsymbol{w}^{\mathrm{T}} \cdot x+b)}$$
+② <strong>多分类模型</strong><br>逻辑回归的二分类问题可以扩展为多项逻辑回归模型：
+$$P(Y=i | x)=\frac{\exp \left(\boldsymbol{w_i}^{\mathrm{T}} \cdot x+b\right)}{1+\sum_{i=1}^{n-1} \exp \left(\boldsymbol{w_i}^{\mathrm{T}} \cdot x+b\right)}, i=1,2,3 \ldots, n-1$$
+$$P(Y=n | x)=\frac{1}{1+\sum_{i=1}^{n-1} \exp \left(\boldsymbol{w_i}^{\mathrm{T}} \cdot x+b\right)}$$ </p>
 </li>
-<li><p><strong>LR模型优缺点</strong><br><strong>优点：</strong><br>① 直接对分类可能性进行建模，无需事先假设数据分布;<br>② 模型可解释性强，不仅预测出”类别”，还可得到近似概率预测，对许多需利用概率辅助决策的任务很有用;<br>③ 对数几率函数是任意阶可导的凸函数，有很好的数学性质，现有的许多数值优化算法都可直接用于求取最优解；<br>④ 可根据系数w的大小判断特征重要性。  </p>
-<p><strong>缺点：</strong><br>① 容易过拟合，LR是一个线性模型，表达非线性能力比较弱；<br>② 只能处理二分类任务；<br>③ 类别特征需要one-hot；<br>④ 如果特征之间线性相关，可能特征重要性将无法解释；  </p>
+<li><p><strong>LR模型优缺点</strong><br><strong>优点：</strong><br>① 直接对分类可能性进行建模，无需事先假设数据分布，避免了假设分布不准确所带来的问题;<br>② 模型可解释性强，不仅预测出”类别”，还可得到近似概率预测，对许多需利用概率辅助决策的任务很有用;<br>③ 对数几率函数是任意阶可导的凸函数，有很好的数学性质，现有的许多数值优化算法都可直接用于求取最优解；<br>④ 模型简单，训练速度快；
+⑤ 可根据系数w的大小判断特征重要性。  </p>
+<p><strong>缺点：</strong><br>① 容易欠拟合，LR是一个线性模型，表达非线性能力比较弱；<br>② 一般的逻辑回归只能处理二分类任务，如果类别严格互斥可以用softmax多分类（否则就k个LR）；<br>③ 类别特征需要one-hot；<br>④ 如果特征之间线性相关，可能特征重要性将无法解释；  </p>
 </li>
 </ul>
 <p>具体的线性回归和逻辑回归区别可参考coursea上吴恩达机器学习视频，讲的很详细。  </p>
-<h3 id="最大熵模型"><a href="#最大熵模型" class="headerlink" title="最大熵模型"></a>最大熵模型</h3><p>　　最大熵原理是概率模型学习的一个准则，最大熵原理认为，学习概率模型时，在所有可能的概率模型分布中，熵最大的模型是最好的模型。<br>　　这一部分有点没搞懂…<br>　　<a href="https://juejin.im/post/5d67d6b6f265da03c34c1052" target="_blank" rel="noopener">Logistic回归与最大熵模型理论推导</a><br>　　最大熵模型：
-$$p_{w}(y | x)=\frac{\exp \left(\sum_{i=1}^{n} w_{i} f_{i}(x, y)\right)}{\sum_{y} \exp \left(\sum_{i=1}^{n} w_{i} f_{i}(x, y)\right)}$$
-　　<strong>逻辑回归Vs最大熵模型：</strong><br>　　逻辑回归是最大熵对应为二类时的特殊情况，也就是说，当逻辑回归扩展为多类别的时候，就是最大熵模型。  </p>
+<h3 id="最大熵模型"><a href="#最大熵模型" class="headerlink" title="最大熵模型"></a>最大熵模型</h3><p>　　最大熵原理是概率模型学习的一个准则，最大熵原理认为，学习概率模型时，在所有可能的概率模型分布中，熵最大的模型是最好的模型。<br>　　这一部分有点没搞懂，<a href="https://juejin.im/post/5d67d6b6f265da03c34c1052" target="_blank" rel="noopener">Logistic回归与最大熵模型理论推导</a><br>　　<strong>逻辑回归Vs最大熵模型：</strong><br>　　逻辑回归是最大熵对应为二类时的特殊情况，也就是说，当逻辑回归扩展为多类别的时候，就是最大熵模型。  </p>
 <h3 id="线性判别分析"><a href="#线性判别分析" class="headerlink" title="线性判别分析"></a>线性判别分析</h3><p>　　线性判别分析(Linear Discriminant Analysis)是一种经典的线性学习方法。<br>　　LDA的思想非常朴素: 给定训练样例集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近、异类样例的投影点尽可能远离。在对新样本进行分类时,
 将其投影到同样的这条直线上，再根据投影点的位置来确定新样本的类别，二维示意图如下：
 <img src="/images/%E9%9D%A2%E7%BB%8F%E6%95%B4%E7%90%86/lda.jpg" alt="">  </p>

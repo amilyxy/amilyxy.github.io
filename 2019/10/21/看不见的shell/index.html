@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="amilyxy&#39;Blog">
 <meta property="og:description" content="ubuntu不好玩 shell好玩">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-02T07:11:34.000Z">
+<meta property="og:updated_time" content="2020-01-14T02:02:40.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -390,6 +390,10 @@
 <td>conda/source deactivate</td>
 <td>退出python环境</td>
 </tr>
+<tr>
+<td>conda info -e</td>
+<td>查看已安装的环境列表</td>
+</tr>
 </tbody></table>
 <h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><h4 id="文件移动-拷贝"><a href="#文件移动-拷贝" class="headerlink" title="文件移动/拷贝"></a>文件移动/拷贝</h4><table>
 <thead>
@@ -475,6 +479,38 @@
 <td>.zip</td>
 <td>unzip -d directory</td>
 <td>用的最多的文档格式，压缩率不高，<strong>l</strong>:列出文件内容</td>
+</tr>
+</tbody></table>
+<h4 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>which filename</td>
+<td>在环境变量$PATH中查找（寻找可执行文件）</td>
+</tr>
+<tr>
+<td>find</td>
+<td>grep info</td>
+</tr>
+<tr>
+<td>find /指定文件夹 -name filename</td>
+<td>查找当前目录(包括子目录)下文件名中含fileinfo的文件</td>
+</tr>
+<tr>
+<td>ll |grep info</td>
+<td>功能同上，但无法递归子目录</td>
+</tr>
+<tr>
+<td>find | xargs grep info</td>
+<td>查找当前目录(包括子目录)下文件内容中含info的文件</td>
+</tr>
+<tr>
+<td>locate filename</td>
+<td>linux将所有文件存在一个数据库中(一周更新一次，实时性不好)，但效率比find高</td>
 </tr>
 </tbody></table>
 <h3 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h3><table>
@@ -768,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda"><span class="nav-number">1.</span> <span class="nav-text">conda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作"><span class="nav-number">2.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件移动-拷贝"><span class="nav-number">2.1.</span> <span class="nav-text">文件移动/拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限"><span class="nav-number">2.2.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件解压-打包-zsh-x"><span class="nav-number">2.3.</span> <span class="nav-text">文件解压/打包 (zsh x)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统相关"><span class="nav-number">3.</span> <span class="nav-text">系统相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器相关"><span class="nav-number">4.</span> <span class="nav-text">服务器相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash与zsh"><span class="nav-number">5.</span> <span class="nav-text">bash与zsh</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda"><span class="nav-number">1.</span> <span class="nav-text">conda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作"><span class="nav-number">2.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件移动-拷贝"><span class="nav-number">2.1.</span> <span class="nav-text">文件移动/拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限"><span class="nav-number">2.2.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件解压-打包-zsh-x"><span class="nav-number">2.3.</span> <span class="nav-text">文件解压/打包 (zsh x)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找文件"><span class="nav-number">2.4.</span> <span class="nav-text">查找文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统相关"><span class="nav-number">3.</span> <span class="nav-text">系统相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器相关"><span class="nav-number">4.</span> <span class="nav-text">服务器相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash与zsh"><span class="nav-number">5.</span> <span class="nav-text">bash与zsh</span></a></li></ol></div>
             
 
           </div>

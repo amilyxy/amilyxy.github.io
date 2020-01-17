@@ -98,7 +98,7 @@
 <meta property="og:description" content="人生苦短 我学python">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;graph_1.png">
-<meta property="og:updated_time" content="2019-12-20T13:18:55.000Z">
+<meta property="og:updated_time" content="2020-01-17T08:38:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;graph_1.png">
 
@@ -372,6 +372,9 @@
 ⭐  <strong>伪代码</strong>  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">topological_sort</span><span class="params">()</span>:</span></span><br><span class="line">    built the graphdict <span class="keyword">and</span> indegree[]</span><br><span class="line">    取得所有indegree = <span class="number">0</span> 的结点加入队列</span><br><span class="line">    遍历队列中所有indegree = <span class="number">0</span> 结点的graphdict ，将其 indegree<span class="number">-1</span></span><br><span class="line">        <span class="keyword">if</span> 满足 indegree == <span class="number">0</span>：添加到遍历队列中</span><br><span class="line">    直到队列为空</span><br></pre></td></tr></table></figure>
 
+<h3 id="149-直线上最多的点数"><a href="#149-直线上最多的点数" class="headerlink" title="149. 直线上最多的点数"></a>149. 直线上最多的点数</h3><p>最开始我是用斜率相等做的，但很多情况都没有考虑：<br>①  重复点的处理<br>② 如果直接算斜率相等，float类型因为不精确所以报错（正好之前python取整中有提到decimal，可以考虑一下这个）<br>③ 怎么唯一表示斜率呢？？题解告诉我了…化简<code>dy/dx</code><br><strong>今日份的Tips：</strong>  求两个数的最大公约数   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a,b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> b!=<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> gcd(b,a%b)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+
 
 
       
@@ -548,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#133-克隆图"><span class="nav-number">1.</span> <span class="nav-text">133. 克隆图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#399-除法求值"><span class="nav-number">2.</span> <span class="nav-text">399.除法求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#310-最小高度树"><span class="nav-number">3.</span> <span class="nav-text">310.最小高度树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#133-克隆图"><span class="nav-number">1.</span> <span class="nav-text">133. 克隆图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#399-除法求值"><span class="nav-number">2.</span> <span class="nav-text">399.除法求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#310-最小高度树"><span class="nav-number">3.</span> <span class="nav-text">310.最小高度树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#149-直线上最多的点数"><span class="nav-number">4.</span> <span class="nav-text">149. 直线上最多的点数</span></a></li></ol></div>
             
 
           </div>
