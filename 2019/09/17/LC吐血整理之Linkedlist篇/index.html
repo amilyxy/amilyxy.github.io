@@ -99,7 +99,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;linked_1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;linked_2.png">
-<meta property="og:updated_time" content="2019-12-09T02:41:56.000Z">
+<meta property="og:updated_time" content="2020-02-04T05:42:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;linked_1.png">
 
@@ -375,6 +375,15 @@
 </ul>
 <h3 id="328-奇偶链表"><a href="#328-奇偶链表" class="headerlink" title="328.奇偶链表"></a>328.奇偶链表</h3><p>刚开始根据数学归纳法找规律，写了很久，奇链表好不容易提取出来了，偶链表就乱了，难，真的难… 然后一直绕在原地操作，题解方法想都没想到，以为是链表就摆在那里了，一点都不能动….<br>代码在github，多多思考消化~~  </p>
 <h3 id="92-反转链表II"><a href="#92-反转链表II" class="headerlink" title="92.反转链表II"></a>92.反转链表II</h3><p>一开始做的很乱，转了一次之后，后面的就乱套了，然后看了下反转链表I，结合反转链表I做出来了，哎，之前做的都忘掉了….<br><strong>大致思路：</strong><br><img src="/images/leecode/linked_2.png" alt="大致思路"></p>
+<p>###21.合并两个有序链表<br>剑指offer上也出现了这个题，可以掌握两种做法：① 递归方法（代码简洁，当链表过长时不适用）② 迭代方法，都可以写一下熟悉。<br><strong>今日份的Tips:</strong><br><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/python-4xing-by-knifezhu-3/" target="_blank" rel="noopener">递归题解</a>中强调了python的<code>return</code>语句中<code>or</code> 和
+<code>and</code>的区别：<strong>and 和 or 都有提前截至运算的功能</strong>     </p>
+<ul>
+<li><code>return a and b</code>：表达式a为 False，那么表达式b将被跳过，返回表达式a，例如：<code>return [] and &#39;amilyxy&#39; = return []</code>    </li>
+<li><code>return a or b</code>：如果表达式a已经为 True，那么表达式b将被跳过，直接返回表达式a的结果，例如<code>return 1 or 2 = return 1</code>    </li>
+</ul>
+<h3 id="23-合并k个有序链表"><a href="#23-合并k个有序链表" class="headerlink" title="23.合并k个有序链表"></a>23.合并k个有序链表</h3><p>21题的扩展版，按照21题的迭代方法稍微修改一下，运行到130个实例超出时间限制…后来加了一个判断条件还是超时==<br><strong>今日份的Tips-1：</strong><code>heapq</code><br>贴几个知识链接：<br>1.<a href="https://www.jianshu.com/p/5f148c3e4f7d" target="_blank" rel="noopener">数据结构-堆</a>，我以前都是把堆栈视为同一个概念，naive啊。<br>2.<a href="https://docs.python.org/zh-cn/3/library/heapq.html" target="_blank" rel="noopener">Python文档-堆队列算法</a>堆常用来实现优先队列算法,
+优先队列让你能够以任意顺序添加对象，并随时找出（删除）最小的元素，比<code>min()</code>高效，python中没有堆这个数据结构,
+但heapq模块提供了堆队列算法的实现，也称为优先队列算法。    </p>
 
       
     </div>
@@ -494,7 +503,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -550,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#206-反转链表"><span class="nav-number">1.</span> <span class="nav-text">206.反转链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#141-环形链表"><span class="nav-number">2.</span> <span class="nav-text">141.环形链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-两两交换链表中的节点"><span class="nav-number">3.</span> <span class="nav-text">24.两两交换链表中的节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#328-奇偶链表"><span class="nav-number">4.</span> <span class="nav-text">328.奇偶链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#92-反转链表II"><span class="nav-number">5.</span> <span class="nav-text">92.反转链表II</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#206-反转链表"><span class="nav-number">1.</span> <span class="nav-text">206.反转链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#141-环形链表"><span class="nav-number">2.</span> <span class="nav-text">141.环形链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-两两交换链表中的节点"><span class="nav-number">3.</span> <span class="nav-text">24.两两交换链表中的节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#328-奇偶链表"><span class="nav-number">4.</span> <span class="nav-text">328.奇偶链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#92-反转链表II"><span class="nav-number">5.</span> <span class="nav-text">92.反转链表II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-合并k个有序链表"><span class="nav-number">6.</span> <span class="nav-text">23.合并k个有序链表</span></a></li></ol></div>
             
 
           </div>
