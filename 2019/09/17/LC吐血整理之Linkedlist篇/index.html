@@ -99,7 +99,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;linked_1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;linked_2.png">
-<meta property="og:updated_time" content="2020-02-04T05:42:33.000Z">
+<meta property="og:updated_time" content="2020-02-28T05:43:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;leecode&#x2F;linked_1.png">
 
@@ -378,8 +378,8 @@
 <p>###21.合并两个有序链表<br>剑指offer上也出现了这个题，可以掌握两种做法：① 递归方法（代码简洁，当链表过长时不适用）② 迭代方法，都可以写一下熟悉。<br><strong>今日份的Tips:</strong><br><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/python-4xing-by-knifezhu-3/" target="_blank" rel="noopener">递归题解</a>中强调了python的<code>return</code>语句中<code>or</code> 和
 <code>and</code>的区别：<strong>and 和 or 都有提前截至运算的功能</strong>     </p>
 <ul>
-<li><code>return a and b</code>：表达式a为 False，那么表达式b将被跳过，返回表达式a，例如：<code>return [] and &#39;amilyxy&#39; = return []</code>    </li>
-<li><code>return a or b</code>：如果表达式a已经为 True，那么表达式b将被跳过，直接返回表达式a的结果，例如<code>return 1 or 2 = return 1</code>    </li>
+<li><code>return a and b</code>：表达式a为 False，那么表达式b将被跳过，返回表达式a，例如：<code>return [] and &#39;amilyxy&#39; = return []</code>；表达式a为True，返回表达式b的值。   </li>
+<li><code>return a or b</code>：如果表达式a已经为 True，那么表达式b将被跳过，直接返回表达式a的结果，例如<code>return 1 or 2 = return 1</code>；如果表达式a为False，返回表达式b的值。<br>注意，这里的return不再return True or False 而是返回表达式的值。  </li>
 </ul>
 <h3 id="23-合并k个有序链表"><a href="#23-合并k个有序链表" class="headerlink" title="23.合并k个有序链表"></a>23.合并k个有序链表</h3><p>21题的扩展版，按照21题的迭代方法稍微修改一下，运行到130个实例超出时间限制…后来加了一个判断条件还是超时==<br><strong>今日份的Tips-1：</strong><code>heapq</code><br>贴几个知识链接：<br>1.<a href="https://www.jianshu.com/p/5f148c3e4f7d" target="_blank" rel="noopener">数据结构-堆</a>，我以前都是把堆栈视为同一个概念，naive啊。<br>2.<a href="https://docs.python.org/zh-cn/3/library/heapq.html" target="_blank" rel="noopener">Python文档-堆队列算法</a>堆常用来实现优先队列算法,
 优先队列让你能够以任意顺序添加对象，并随时找出（删除）最小的元素，比<code>min()</code>高效，python中没有堆这个数据结构,
